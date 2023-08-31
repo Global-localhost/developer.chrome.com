@@ -97,7 +97,7 @@ Origin trials provide an opportunity for us to validate experimental features
 and APIs, and make it possible for you to provide feedback on their usability
 and effectiveness in broader deployment.
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/b8W2avaeSBFf7PhZcxAX.png", alt="", className="float-right", height="590", width="800" %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/b8W2avaeSBFf7PhZcxAX.png", alt="", class="float-right", height="590", width="800" %}
 
 Experimental features are typically only available behind a flag, but when we
 offer an Origin Trial for a feature, you can register for that origin trial
@@ -185,7 +185,7 @@ removing the `invisible` attribute, and rendering the content.
 
 ## Chrome Dev Summit 2019 {: #cds2019 }
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/4L4iDgNCnYAykp3UXZRe.png", alt="", className="float-right", height="420", width="800" %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/4L4iDgNCnYAykp3UXZRe.png", alt="", class="float-right", height="420", width="800" %}
 
 If you missed Chrome Dev Summit, all of the talks are on our
 [YouTube channel][cds-playlist].
@@ -202,7 +202,7 @@ went on between the talks, including the newest member of our team,
 This covers only some of the key highlights. Check the links below for
 additional changes in Chrome 78.
 
-* [What's new in Chrome DevTools (79)](https://developers.google.com/web/updates/2019/10/devtools)
+* [What's new in Chrome DevTools (79)](/blog/new-in-devtools-79)
 * [Chrome 79 deprecations & removals](https://developers.google.com/web/updates/2019/10/chrome-79-deps-rems)
 * [ChromeStatus.com updates for Chrome 79](https://www.chromestatus.com/features#milestone%3D79)
 * [What's new in JavaScript in Chrome 79](https://v8.dev/blog/v8-release-79)

@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Publish Your App"
+seoTitle: "Publish Your Chrome App [Deprecated]"
 date: 2012-09-17
 updated: 2013-10-21
 description: How to publish your Chrome App.
@@ -21,7 +22,7 @@ detailed instructions, see [Publishing Your App][3].
 and zip file in a way that reduces the size of the user download package. For details, see [Reducing
 the size of the user download package][5].
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /docs/apps/migration/
 [3]: /docs/webstore/publish/
 [4]: /docs/native-client/

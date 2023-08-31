@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Web APIs"
+seoTitle: "Web APIs for Chrome Apps [Deprecated]"
 date: 2012-09-17
 updated: 2017-03-01
 description: Chrome Apps can use all the APIs that are available to websites.
@@ -83,7 +84,7 @@ APIs in bundled libraries
   that library's JavaScript files with your extension. Bundled libraries work in extensions just as
   they do in other web pages.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /docs/extensions/reference/
 [4]: https://developer.mozilla.org/en/Gecko_DOM_Reference

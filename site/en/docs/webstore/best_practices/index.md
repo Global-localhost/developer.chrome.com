@@ -1,215 +1,179 @@
 ---
 layout: "layouts/doc-post.njk"
 title: Best Practices
+seoTitle: Best Practices for Chrome extensions
 date: 2017-08-30
+updated: 2023-08-24
 description: >
-  Best practices on how to implement your app and list it in the Chrome Web Store.
+  How to create a high-quality extension and Chrome Web store listing.
 ---
 
-This page has advice on how you should implement your app and list it in the store. As the store
-matures and we learn from developers' experiences, these recommendations will be updated.
+## Overview {: #design-a-high-quality-extension}
 
-## Design a great app
+This page provides guidelines for designing a [high-quality extension][hq-guidelines] and Chrome Web Store listing. These recommendations may be updated as the store continues to grow and we learn from developers' experiences. We strongly encourage you to create extensions that meet standards for compliance, performance, security, and user experience, as described in the following sections.
 
-This is the hard part. For advice, you can read articles about [app design][1]. Also, follow the
-[pre-launch checklist][2].
+## Compliance {: #compliance}
 
-## Support Google Accounts
+Extensions that are available in the Chrome Web Store are required to adhere to the [developer program policies][program-policies]. If you've received a policy violation warning or want to learn about common violations pitfalls, see [Troubleshooting Chrome Web Store violations][cws-violations].
 
-If your app requires user login, we recommend that you provide at least some support for Google
-Accounts. The reason is that if a user purchases your app from the Chrome Web Store, odds are the
-user is already logged into a Google Account whenever they use your app. Reducing the number of
-logins improves the user's experience.
+## Manifest Version 3
 
-If you already have a login system, consider correlating the Google Account ID to the user account
-in your system. You can do this by storing the user's OpenID URL from Google's OpenID service, in
-the same way that you store other data that's associated with a user's account. When someone is
-logged into a Google Account but not your login system, you can automatically log them into their
-user account in your system.
+Manifest V3 is the most recent version of the Chrome extension platform and is the required version for submitting new items to the Chrome Web Store. See the [Manifest V3 overview][mv3-overview] to learn about the platform changes. Existing extensions should consider migrating to Manifest V3, see [Migrate to Manifest V3][mv3-migration] for instructions on how to migrate.
 
-See [Identifying the User][3] for more information about supporting Google Accounts.
+## Security
 
-## Keep ex-users' data for 30 days or more
+Your extension should be safe for your users. For example, send user data securely via HTTPS or web services security. Check that your extension does not pose security threats and does not use [deceptive installation tactics][deceptive-install]. See [Stay secure][stay-secure] for a more information.
 
-You should keep users' data for at least 30 days after they cancel their subscription or uninstall
-your app. Users might be unsubscribed for reasons beyond their control, and even if they do
-intentionally unsubscribe or uninstall the app, they might come back.
+## Privacy
 
-## Cache license data
+An extension is required to disclose in the [Privacy tab][privacy-tab] what user data it will collect and how it will handle user data. This information must be accurate, up-to-date, and match the extension's [privacy policy][privacy-policy]. For more guidance on privacy, see [Protecting User Privacy policies][user-privacy] and the [User Data FAQs][user-data].
 
-If you use Chrome Web Store Payments, you can use the Licensing API to programmatically check for
-payment, as described in [Checking for Payment][4].
+## Performance and functionality {: #performance}
 
-But don't query the license server too often: [Cache the results][5].
+Add end-to-end tests using testing libraries like [Puppeteer][puppeteer] to make sure your extension is performing as intended from start to finish. In addition, consider conducting thorough manual testing across different browser versions, OSs, and network conditions to ensure smooth functionality.
 
-## Create a compelling store listing
+## User experience {: #user-experience }
 
-The better your app's listing in the store, the more users will find and try your app. When choosing
-your app's name, writing its description, and designing its logo, keep in mind Google's [Branding
-Guidelines][7].
+Design your extension with the user in mind by providing a simple, intuitive, and seamless user interface while also respecting user privacy.
 
-### Provide great images
+### Onboarding experience
 
-See [Supplying Images][8] for guidelines on the images you should supply to the store.
+Start onboarding your users as soon as they reach your store listing by providing screenshots and a video of how the extension works. We recommend following the [permission warning guidelines][doc-perm-warn] to increase the chances of users installing your extension.
 
-### Choose your app's category well
+### Designing a persistent UI
 
-The Chrome Developer Dashboard lets you specify a primary and secondary category for each web app.
-The primary category determines where your app appears in the store (the secondary category isn't
-used to display your app).
+Avoid distracting users when implementing a persistent UI. For example, when designing a [side panel][api-sidepanel] for your extension, make sure it enhances the user's browsing experience by providing relevant information and useful functionality. A side panel should help users accomplish tasks with as little distraction as possible.
 
-Each category is organized into logical groups. The store displays your web app under the group
-heading and in the filtered category. If no category matches your web app, you can select 'Other';
-the store will only display your web app under the group heading. For example, if you choose
-"Developer Tools" within the Productivity group, your app appears in the store under both the
-Productivity and Developer Tools lists. Alternatively, if you choose "Other", your app appears in
-the Productivity list only.
+### Sign in with Google {: #support-google-accounts }
 
-You can also list additional categories or keywords to describe your app. These may be used to
-improve search relevance in the future, or to influence future versions of the category list. The
-following list describes the categories that you can choose for your web app. The categories might
-change; if that happens, your web app might be recategorized.
+If your extension requires user login, we recommend that you support [Sign in with Google][google-signin], which provides a good user experience for Chrome Web Store users as they are likely to be logged in already. If you already have a login system, consider correlating the Google Account ID to the user account in your system. You can use the [Chrome Identity API][identity-api] to support Google accounts in the following ways:
 
-<table>
-  <thead>
-    <tr>
-      <th>Group</th>
-      <th>Categories</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Business Tools</td>
-      <td>
-        Accounting & Finance<br>
-        Admin & Management<br>
-        ERP & Logistics<br>
-        HR & Legal<br>
-        Marketing & Analytics<br>
-        Sales & CRM
-      </td>
-      <td>Apps to help businesses run successfully.</td>
-    </tr>
-    <tr>
-      <td>Education</td>
-      <td>
-        Academic Resources<br>
-        Family<br>
-        Foreign Languages<br>
-        School Administration<br>  
-        Teacher Tools<br>
-        Test Preparation
-      </td>
-      <td>Apps that teach the user something or can be helpful in a classroom environment.</td>
-    </tr>
-    <tr>
-      <td>Entertainment</td>
-      <td>
-        Books<br>
-        Music<br>
-        Online Video<br>
-        Photos<br>
-        Radio<br>
-        TV & Movies
-      </td>
-      <td>
-        All leisure apps except for games.<br>
-        <b>Note</b>: An app can be in either Entertainment or Games, but it should never be in both.
-      </td>
-    </tr>
-    <tr>
-      <td>Games</td>
-      <td>
-        Action & Adventure Games<br>
-        Arcade Games<br>
-        Board Games<br>
-        Card Games<br>
-        Educational Games<br>
-        Puzzle Games<br>
-        Role Playing Games<br>
-        Sports Games<br>
-        Strategy Games<br>
-        Virtual Worlds
-      </td>
-      <td>All kinds of games that users can play. Also see Education and Entertainment.</td>
-    </tr>
-    <tr>
-      <td>Lifestyle</td>
-      <td>
-        Astrology<br>
-        Fashion<br>
-        Food<br>
-        Health & Fitness<br>
-        Money<br>
-        Religion<br> 
-        Shopping<br>
-        Travel
-      </td>
-      <td>Apps for everyday life.</td>
-    </tr>
-    <tr>
-      <td>News & Weather</td>
-      <td>
-        Blogs<br>
-        Magazines<br>
-        News Aggregators<br>
-        Newspapers<br>
-        Social News<br>
-        Sports<br>
-        Weather Forecasts
-      </td>
-      <td>Apps that feature news about current events or weather.</td>
-    </tr>
-    <tr>
-      <td>Productivity</td>
-      <td>
-        Calendar & Scheduling<br>
-        Creative Tools<br>
-        Design Essentials<br> 
-        Developer Tools<br>
-        Office Applications<br>  
-        Online Documents & File Storage<br>
-        Search & Browsing Tools<br>
-        Task Management
-      </td>
-      <td>
-        Apps that someone might spend a significant amount of time using to get something done. 
-        Also see Utilities.
-      </td>
-    </tr>
-    <tr>
-      <td>Social & Communication</td>
-      <td>
-        Blogging<br>
-        Chat & IM<br>
-        Dating<br>
-        Email & Contacts<br>
-        Phone & SMS<br>
-        Social Networking
-      </td>
-      <td>Apps that help people communicate with each other.</td>
-    </tr>
-    <tr>
-      <td>Utilities</td>
-      <td>
-        Alarms & Clocks<br>
-        Bookmarks<br>
-        Calculators<br>
-        Dictionaries<br>
-        Notepads
-      </td>
-      <td>Useful apps that have a narrower scope than the ones in the Productivity category.</td>
-    </tr>
-  </tbody>
-</table>
 
-[1]: /docs/apps
-[2]: /docs/webstore/launching#pre-launch-checklist
-[3]: /docs/webstore/identify_user
-[4]: /docs/webstore/check_for_payment
-[5]: /docs/webstore/check_for_payment#cache
-[6]: #top
-[7]: /docs/webstore/branding
-[8]: /docs/webstore/images
-[9]: #top
+- Google OAuth2/OpenID: See [Identifying the User][identify-user].
+- OAuth2: See [Authenticate users with Google][oauth2-tutorial].
+
+## Store listing
+
+The purpose of an extension's [Chrome Web Store store listing][completing-listing] is to set the user's expectations. It should explicitly communicate what the extension does. See [Listing requirements][cws-listing] for a complete list of requirements.
+
+### Create a compelling store listing {: #create-a-compelling-store-listing }
+
+The better your extension's store listing, the more users will discover and try your extension. [Creating a great listing page][great-listing-page] provides guidelines for designing the best store listing experience. When choosing your extension's name, writing its description, and designing its logo, keep in mind Google's [Branding guidelines][cws-branding].
+
+### Provide great images {: #provide-great-images}
+
+Include all the [required images][cws-images] (icon, tile, marquee, and screenshots). Images should not be blurry or too busy, as described in [Images of a high-quality listing][hq-listing-images].
+
+### Choose your extension's category well {: #choose-category-well}
+
+The developer console lets you specify a category for each extension. Choose the most appropriate category:
+
+Accessibility
+: Extensions designed to enhance the browsing experience for individuals with visual impairments, hearing loss, limited dexterity, and other disabilities. This may include tools like screen readers, dark mode extensions, or utilities that help with navigation, using keyboard shortcuts, voice commands, among others.
+
+Art & Design
+: These extensions provide tools for viewing, editing, organizing, and sharing images and photos. They may also offer features for capturing screenshots, image searching, and integrating with popular image hosting or editing services.
+
+Communication
+: Extensions that enable communications. This category covers a wide variety of things: composing and templating emails, email management, screen sharing, video conferencing apps and enhancements, and much more.
+
+Developer Tools
+: Extensions that help web developers perform tasks like debugging, performance analysis, code linting, and tools that enhance the browser's Dev Tools. For example, real-time HTML/CSS/JavaScript editing, API testing, and CSS inspection.
+
+Education
+: Extensions that teach or aid in teaching, including language learning, note-taking, teaching aids, and sign-language instruction, among others.
+
+Entertainment
+: These extensions are designed for fans of sports, music, television, and cinema.
+
+Functionality & UI
+: Extensions that enhance the Chrome user interface, such as tab managers, shortcut managers, and app launchers.
+
+Games
+: Extensions providing a wide array of desktop and arcade-style games.
+
+Household
+: Extensions for helping you around the house. This category includes recipe savers and managers, budgeting, product research, and more.
+
+Just for Fun
+: These extensions are designed for entertainment. They can include games, interesting new tab backgrounds, quirky widgets, jokes, trivia, and more.
+
+News & Weather
+: These extensions keep users informed about current events and weather conditions. They can collect news from multiple sources, present real-time weather updates, notify breaking news, and more.
+
+Privacy & Security
+: Extensions such as VPNs, password safes, and phishing deterrence.
+
+Shopping
+: These extensions aim to enhance the online shopping experience. They might offer features like price comparison, coupon finders, reviews and ratings, wish list management, and more.
+
+Social Media & Networking
+: These extensions are designed to enhance social media platforms. They can integrate with services and offer features like easy sharing, notifications, status updates, and more.
+
+Tools
+: Tools that don't fit into other categories
+
+Travel
+: Extensions for planning trips.
+
+Well-being
+: Extensions for self-help, mindfulness, and personal development.
+
+Workflow & Planning
+: Extensions to help users perform their tasks more efficiently. They could range from time trackers, tools to stay focused, to-do list managers, email organizers, document editors, and calendar utilities, among others.
+
+### Category revisions {: #category-revisions }
+
+In mid 2023 the categories changed. Most of the new categories match previous ones. Several were
+replaced by multiple categories. If you previously used one of the replaced categories, use the
+table below to decide which new category best suits your extension.
+
+Fun
+: * Entertainment
+  * Games
+  * Just for Fun
+
+Photos
+: * Art & Design
+
+Productivity
+: * Education
+  * Functionality & UI
+  * Household
+  * Privacy & Security
+  * Tools
+  * Workflow & Planning
+
+Social & Communications
+: * Communication
+  * Social Media & Networking
+  * Travel
+  * Well-being
+
+[api-sidepanel]: /docs/extensions/reference/sidePanel/
+[completing-listing]: /docs/webstore/cws-dashboard-listing/
+[cws-branding]: /docs/webstore/branding
+[cws-images]: /docs/webstore/images
+[cws-listing]: /docs/webstore/program-policies/listing-requirements/
+[cws-violations]: /docs/webstore/troubleshooting/
+[dashboard-privacy]: /docs/webstore/cws-dashboard-privacy/
+[deceptive-install]: /docs/webstore/program-policies/deceptive-installation-tactics/
+[doc-perm-warn]: /docs/extensions/mv3/permission_warnings/
+[google-signin]: https://developers.google.com/identity/gsi/web/guides/overview
+[great-listing-page]: /docs/webstore/best_listing/
+[hq-guidelines]: /docs/webstore/program-policies/quality-guidelines/
+[hq-listing-images]: /docs/webstore/best_listing/#images
+[identify-user]: /docs/webstore/identify_user
+[identity-api]: /docs/extensions/reference/identity/
+[mv3-migration]: https://developer.chrome.com/docs/extensions/migrating/
+[mv3-overview]: /docs/extensions/mv3/intro/mv3-overview/
+[oauth2-tutorial]: /docs/extensions/mv3/tut_oauth/
+[privacy-policy]: /docs/webstore/publish/#setup-a-developer-account
+[privacy-tab]: /docs/webstore/cws-dashboard-privacy/#certify-your-data-use-practices
+[program-policies]: /docs/webstore/program-policies/
+[puppeteer]: https://pptr.dev/guides/chrome-extensions
+[single-purpose]: /docs/extensions/mv3/single_purpose/
+[stay-secure]: /docs/extensions/mv3/security/
+[supplying-images]: /docs/webstore/images/
+[user-data]: /docs/webstore/user_data/
+[user-privacy]: /docs/webstore/program-policies/#protecting-user-privacy

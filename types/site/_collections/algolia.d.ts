@@ -23,8 +23,9 @@ declare global {
     image?: string;
     tags: string[];
     title: string;
-    type?: 'blogPost' | 'doc' | 'landing' | 'release';
+    type?: PostTypes;
     url: string;
+    apiNamespacePaths?: string[];
   }
 }
 

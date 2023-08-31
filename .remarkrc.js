@@ -6,6 +6,7 @@ exports.plugins = [
 
   // Remark Lint Style Guide preset and overrides.
   require('remark-preset-lint-markdown-style-guide'),
+  ['lint-code-block-style', false],
   ['lint-blockquote-indentation', false],
   ['lint-emphasis-marker', false],
   ['lint-hard-break-spaces', false],
@@ -44,7 +45,6 @@ exports.plugins = [
   [require('remark-lint-first-heading-level'), 2],
 
   // Custom plugins.
-  require('./tools/linting/no-dash-spaces.js'),
-  require('./tools/linting/no-smart-quotes.js'),
   require('./tools/linting/no-unescaped-template-tags.js'),
+  require('./tools/linting/bad-urls.js'),
 ];

@@ -1,6 +1,7 @@
 ---
 layout: 'layouts/doc-post.njk'
 title: "Step 1: Create and Run a Chrome App"
+seoTitle: "Step 1: Create and Run a Chrome App [Deprecated]"
 date: 2014-10-17
 updated: 2014-10-20
 description: How to create, install, run, and debug a basic Chrome App.
@@ -209,7 +210,7 @@ For more detailed information about some of the APIs introduced in this step, re
 
 Ready to continue onto the next step? Go to [Step 2 - Import an existing web app »][18]
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: #launch
 [4]: /docs/extensions/reference/app_runtime#event-onLaunched

@@ -31,7 +31,7 @@ Here's what you need to know:
 * [Web Share, and Web Share Target](#webshare) arrive on the desktop.
 * And, there's [plenty more](#more).
 
-I'm [Pete LePage](https://twitter.com/petele), working, and shooting
+I'm [Pete LePage](https://petelepage.com/), working, and shooting
 from home, let's dive in and see what's new for developers in Chrome 89!
 
 ## WebHID, WebNFC, and Web Serial {: #hardware }
@@ -44,7 +44,7 @@ They allow makers to connect to fun, quirky hardware, video conferencing apps
 to use the dedicated telephony buttons on specialized speakers. Or any number
 of other use cases.
 
-{% Video className="float-right", autoplay="true", muted="true", loop="true", src="video/0g2WvpbGRGdVs0aAPc6ObG7gkud2/g8VCbIMljnxuemDFxl99.mp4" %}
+{% Video class="float-right", autoplay="true", muted="true", loop="true", src="video/0g2WvpbGRGdVs0aAPc6ObG7gkud2/g8VCbIMljnxuemDFxl99.mp4" %}
 
 Using Web Serial, and [about 60 lines of code][pico-code],
 [@AndreBan][andre-tweet] created a [page][andre-page] that can interact with
@@ -56,7 +56,7 @@ You had to tap the phone to the right card, in the right order.
 
 <div style="clear:both;"></div>
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/VAuLti7I9ZQCwLUEWF5Y.png", className="float-right", alt="StreamDeck with Daft Punk Drum Pad", width="800", height="536" %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/VAuLti7I9ZQCwLUEWF5Y.png", class="float-right", alt="StreamDeck with Daft Punk Drum Pad", width="800", height="536" %}
 
 And my favorite, [@bramus][bramus-tweet] used WebHID to connect to a
 StreamDeck, building a [Daft Punk drum pad][bramus-demo]. If you don't have
@@ -118,11 +118,11 @@ need, and you can copy and paste directly in to your site.
 
 ## Web Share and Web Share Target for Desktop {: #webshare }
 
-{% Video className="float-right", autoplay="true", muted="true", loop="true", src=["video/0g2WvpbGRGdVs0aAPc6ObG7gkud2/0vmJ4uVRmhkufMBsNrEO.webm","video/0g2WvpbGRGdVs0aAPc6ObG7gkud2/8rZz40MCN1qTifH2FHqG.mp4"] %}
+{% Video class="float-right", autoplay="true", muted="true", loop="true", src=["video/0g2WvpbGRGdVs0aAPc6ObG7gkud2/0vmJ4uVRmhkufMBsNrEO.webm","video/0g2WvpbGRGdVs0aAPc6ObG7gkud2/8rZz40MCN1qTifH2FHqG.mp4"] %}
 
 If your site allows users to create, edit, or interact with files, you should
 be using the Web Share and Web Share Target APIs. These APIs have been
-available on mobile for some time but are now supported on Chrome OS and
+available on mobile for some time but are now supported on ChromeOS and
 Windows.
 
 Web Share makes it possible for users to send files or data to other
@@ -174,7 +174,7 @@ And of course there's plenty more.
 
 Chrome now allows top level `await` within JavaScript modules.
 
-{% Img className="float-right",  src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/Yqyikwd9xFsj6jqnhYar.png", alt="New omnibox install icon for PWAs", width="380", height="180" %}
+{% Img class="float-right",  src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/Yqyikwd9xFsj6jqnhYar.png", alt="New omnibox install icon for PWAs", width="380", height="180" %}
 
 To reduce confusion for users, we've updated the icon shown in the omnibox for
 installable PWAs.
@@ -182,7 +182,7 @@ installable PWAs.
 <br style="clear:both;">
 
 And, if you've used a Trusted Web Activity to make your PWA available in the
-Play Store for Chrome OS, you can sign up for the
+Play Store for ChromeOS, you can sign up for the
 [Digital Goods API origin trial](/blog/new-in-chrome-88/#play-billing).
 
 ## Further reading
@@ -190,7 +190,7 @@ Play Store for Chrome OS, you can sign up for the
 This covers only some of the key highlights. Check the links below for
 additional changes in Chrome 89.
 
-* [What's new in Chrome DevTools (89)](https://developers.google.com/web/updates/2021/01/devtools)
+* [What's new in Chrome DevTools (89)](/blog/new-in-devtools-89)
 * [Chrome 89 deprecations & removals](/blog/deps-rems-89/)
 * [ChromeStatus.com updates for Chrome 88](https://www.chromestatus.com/features#milestone%3D89)
 * [What's new in JavaScript in Chrome 88](https://v8.dev/blog/v8-release-89)

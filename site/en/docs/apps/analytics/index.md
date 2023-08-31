@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Analytics"
+seoTitle: "Google Analytics for Chrome apps [Deprecated]"
 date: 2013-08-01
 #updated: TODO
 description: How to integrate Google Analytics into your Chrome App.
@@ -44,7 +45,7 @@ The library is [google-analytics-bundle.js][10].
 
 ## Documentation {: #documentation }
 
-Documentation for the CPA library is aslo on GitHub. See specifically:
+Documentation for the CPA library is also on GitHub. See specifically:
 
 - [Prerequisites][11]
 - [API Reference][12]
@@ -55,7 +56,7 @@ Documentation for the CPA library is aslo on GitHub. See specifically:
 For an illustration of how to use the CPA library to measure user interactions in an app, see the
 [examples][14].
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: https://github.com/GoogleChrome/chrome-platform-analytics/tree/master/src/example
 [4]: https://github.com/GoogleChrome/chrome-platform-analytics/wiki

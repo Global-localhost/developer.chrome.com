@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - Action Handlers"
+seoTitle: "Chrome Apps Manifest - Action Handlers [Deprecated]"
 date: 2017-02-03
 #updated: TODO
 description: Reference documentation for the action_handlers property of manifest.json.
@@ -31,6 +32,6 @@ This list contains one or more of the `ActionType` values specified in the `Acti
 }
 ```
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: ../app_runtime#event-onLaunched

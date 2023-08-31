@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright 2023 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,20 @@ import {BaseElement} from './base-element';
 
 import {activateSearch, deactivateSearch} from '../actions/search';
 
-const client = algoliasearch('0PPZV3EY55', 'f08cd9d7ead266781a7c2455b5f4a7b2');
+const client = algoliasearch('0PPZV3EY55', 'dc0d3a2d53885be29eacc351026dcdcf');
 const index = client.initIndex('prod_developer_chrome');
+
+const blockedQueries = [
+  /add? ?bloc?k?/,
+  /d(a|o|u)w?nl?o?/,
+  /^p(a|e)r+(l|al|el)/,
+  /automate be/,
+  /roblox/,
+  /ublock/,
+  /vpn/,
+  /porn/,
+  /xxx/,
+];
 
 export class SearchBox extends BaseElement {
   static get properties() {
@@ -35,6 +47,7 @@ export class SearchBox extends BaseElement {
       active: {type: Boolean, reflect: true},
       buttonLabel: {type: String},
       docsLabel: {type: String},
+      articlesLabel: {type: String},
       blogLabel: {type: String},
       locale: {type: String},
       placeholder: {type: String},
@@ -69,16 +82,16 @@ export class SearchBox extends BaseElement {
     this._active = false;
     this.buttonLabel = 'open search';
     this.docsLabel = 'Documentation';
+    this.overviewLabel = 'Overview';
+    this.articlesLabel = 'Articles';
     this.blogLabel = 'Blog';
     this.locale = 'en';
     this.placeholder = 'Search';
     this.query = '';
     /** @type AlgoliaCollectionItem[] */
     this.results = [];
-    /** @type AlgoliaCollectionItem[] */
-    this.docsResults = [];
-    /** @type AlgoliaCollectionItem[] */
-    this.blogResults = [];
+    /** @type {Object<string, AlgoliaCollectionItem[]>} */
+    this.categorisedResults = {};
     // Used when rendering categorized results. The counter helps ensure that
     // each result has a unique id that corresponds to its rendered order in
     // the list.
@@ -91,10 +104,11 @@ export class SearchBox extends BaseElement {
     this.searchIcon = unsafeSVG(searchIcon);
 
     this.renderResult = this.renderResult.bind(this);
-    this.search = debounce(this.search.bind(this), 500);
+    this.search = debounce(this.search.bind(this), 1000);
   }
 
   clearSearch() {
+    this.input.blur();
     this.active = false;
     this.input.value = '';
     this.search('');
@@ -109,9 +123,9 @@ export class SearchBox extends BaseElement {
   }
 
   firstUpdated() {
-    this.input = /** @type {!HTMLInputElement} */ (this.querySelector(
-      '.search-box__input'
-    ));
+    this.input = /** @type {!HTMLInputElement} */ (
+      this.querySelector('.search-box__input')
+    );
 
     // Purely for style points.
     // Add a meta/ctrl + K keyboard shortcut to quick-focus the search input.
@@ -226,9 +240,9 @@ export class SearchBox extends BaseElement {
   }
 
   navigateToResult() {
-    const link = /** @type {HTMLAnchorElement} */ (this.querySelector(
-      '.search-box__link[aria-selected="true"]'
-    ));
+    const link = /** @type {HTMLAnchorElement} */ (
+      this.querySelector('.search-box__link[aria-selected="true"]')
+    );
 
     if (link) {
       window.location.href = link.href;
@@ -247,13 +261,13 @@ export class SearchBox extends BaseElement {
    */
   scrollHitIntoView() {
     this.requestUpdate().then(() => {
-      const activeLink = /** @type {HTMLAnchorElement} */ (this.querySelector(
-        '.search-box__link[aria-selected="true"]'
-      ));
+      const activeLink = /** @type {HTMLAnchorElement} */ (
+        this.querySelector('.search-box__link[aria-selected="true"]')
+      );
 
-      const modal = /** @type {HTMLElement} */ (this.querySelector(
-        '.search-box__results'
-      ));
+      const modal = /** @type {HTMLElement} */ (
+        this.querySelector('.search-box__results')
+      );
 
       // Unfortunately we can't use scrollIntoView() as it seems to scroll the
       // entire page. So instead we manually scroll the modal to the offsetTop
@@ -279,10 +293,22 @@ export class SearchBox extends BaseElement {
 
   async search(query) {
     this.query = query.trim();
+
+    for (const blockedQuery of blockedQueries) {
+      if (this.query.match(blockedQuery)) {
+        return;
+      }
+    }
+
     if (this.query === '') {
       this.results = [];
-      this.docsResults = [];
-      this.blogResults = [];
+      this.categorisedResults = {};
+      return;
+    }
+
+    if (this.query.length < 4) {
+      this.results = [];
+      this.categorisedResults = {};
       return;
     }
 
@@ -311,16 +337,50 @@ export class SearchBox extends BaseElement {
             r[highlightKey] = highlightValue.value;
           }
         }
-        r.snippet = r._snippetResult.content.value;
+        // Some pages don't get indexed with fulltext content, but they do have
+        // a meta description, so fall back to that.
+        r.snippet =
+          r._snippetResult.content?.value ||
+          r._snippetResult.description?.value ||
+          '';
         return r;
       });
 
-      // Further categorize results into docs and blog posts.
-      this.docsResults = this.results.filter(r => r.type === 'doc');
-      this.blogResults = this.results.filter(r => r.type === 'blogPost');
+      // Further categorize results into docs, articles, blog and the remaining posts.
+      /** @type {AlgoliaCollectionItem[] & {
+       *   filterMutate?: (predicate: (item: AlgoliaCollectionItem) => boolean) => AlgoliaCollectionItem[]
+       * }}
+       */
+      const mutableResults = [...this.results];
+      mutableResults.filterMutate = predicate => {
+        const results = [];
+        let i = 0;
+        while (i < mutableResults.length) {
+          if (predicate(mutableResults[i])) {
+            results.push(mutableResults.splice(i, 1)[0]);
+          } else {
+            i++;
+          }
+        }
+
+        return results;
+      };
+
+      this.categorisedResults = {
+        [this.overviewLabel]: [],
+        [this.docsLabel]: mutableResults.filterMutate(r => r.type === 'doc'),
+        [this.articlesLabel]: mutableResults.filterMutate(
+          r => r.type === 'article'
+        ),
+        [this.blogLabel]: mutableResults.filterMutate(
+          r => r.type === 'blogPost'
+        ),
+      };
+
+      this.categorisedResults[this.overviewLabel] = mutableResults;
     } catch (err) {
       console.error(err);
-      console.error(err.debugData);
+      console.error(/** @type {any} */ (err).debugData);
     }
   }
 
@@ -394,8 +454,23 @@ export class SearchBox extends BaseElement {
       return;
     }
 
-    this.blogResults = this.blogResults || [];
-    this.docsResults = this.docsResults || [];
+    // check if the query length is less than two
+    // if it is, then prompt the user to search for at
+    // least three characters
+    if (this.query.length <= 2) {
+      return html`
+        <div
+          id="search-box__results"
+          class="search-box__results"
+          role="listbox"
+          aria-label="${this.placeholder}"
+        >
+          <div class="search-box__result-heading type--label">
+            Please enter at least 3 characters for search suggestions.
+          </div>
+        </div>
+      `;
+    }
 
     this.resultsCounter = -1;
     return html`
@@ -405,22 +480,16 @@ export class SearchBox extends BaseElement {
         role="listbox"
         aria-label="${this.placeholder}"
       >
-        ${this.blogResults.length
-          ? html`
-              <div class="search-box__result-heading type--label">
-                ${this.blogLabel.toUpperCase()}
-              </div>
-              ${this.blogResults.map(this.renderResult)}
-            `
-          : ''}
-        ${this.docsResults.length
-          ? html`
-              <div class="search-box__result-heading type--label">
-                ${this.docsLabel.toUpperCase()}
-              </div>
-              ${this.docsResults.map(this.renderResult)}
-            `
-          : ''}
+        ${Object.entries(this.categorisedResults).map(([label, results]) =>
+          results.length
+            ? html`
+                <div class="search-box__result-heading type--label">
+                  ${label.toUpperCase()}
+                </div>
+                ${results.map(this.renderResult)}
+              `
+            : ''
+        )}
       </div>
     `;
   }
@@ -445,7 +514,6 @@ export class SearchBox extends BaseElement {
           @keydown="${this.onKeyDown}"
           aria-label="${this.placeholder}"
           aria-autocomplete="list"
-          aria-controls="search-box__results"
         />
       </div>
       ${this.renderResults()}

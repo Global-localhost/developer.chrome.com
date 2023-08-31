@@ -1,9 +1,10 @@
 ---
 layout: "layouts/doc-post.njk"
 title: Integration Guide
+seoTitle: Android Trusted Web Activity integration guide
 date: 2020-02-04
 updated: 2020-02-04
-description: Trusted Web Activity Integration Guide
+description: Learn how to use Trusted Web Activities in your Android app.
 authors:
   - andreban
 ---
@@ -83,7 +84,7 @@ dependency to the `dependencies` section:
 
 ```groovy
 dependencies {
-    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.1.0'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.2.0'
 }
 ```
 
@@ -315,7 +316,7 @@ Version: 3
 </pre>
 
 With both pieces of information at hand, head over to the [assetlinks
-generator](/digital-asset-links/tools/generator),
+generator](https://developers.google.com/digital-asset-links/tools/generator),
 fill-in the fields and hit _Generate Statement_. Copy the generated statement
 and serve it from your domain, from the URL `/.well-known/assetlinks.json`.
 

@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Create Your First App"
+seoTitle: "Create Your First Chrome App [Deprecated]"
 date: 2012-09-17
 updated: 2015-06-22
 description: A tutorial on how to create a basic Chrome App.
@@ -136,10 +137,10 @@ These command line options to Chrome may help you iterate:
 - `--app-id=ajjhbohkjpincjgiieeomimlgnll` launches an app already loaded into Chrome. It does not
   restart any previously running app, but it does launch the new app with any updated content.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: publish_app
-[4]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/hello-world
+[4]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/_archive/apps/samples/hello-world
 [5]: manifest
 [6]: manifestVersion
 [7]: app_lifecycle#lifecycle

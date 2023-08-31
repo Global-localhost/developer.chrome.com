@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - Offline Enabled"
+seoTitle: "Chrome Apps Manifest - Offline Enabled [Deprecated]"
 #date: TODO
 #updated: TODO
 #description: TODO
@@ -22,10 +23,10 @@ is `true` unless `"webview"` permission is requested. In this case, network conn
 to be required and `"offline_enabled"` defaults to `false`.
 
 The `"offline_enabled"` value is also used to determine whether a network connectivity check will be
-performed when launching an app in [Chrome OS kiosk mode][3]. A network connectivity check will be
+performed when launching an app in [ChromeOS kiosk mode][3]. A network connectivity check will be
 performed when apps are not offline enabled, and app launching put on hold until the device obtains
 connectivity to the Internet.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /apps/manifest/kiosk_enabled

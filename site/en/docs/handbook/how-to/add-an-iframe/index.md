@@ -1,7 +1,7 @@
 ---
 layout: 'layouts/doc-post.njk'
-title: Add an IFrame
-description: 'Add an IFrame to a post.'
+title: Add an iframe
+description: 'Add an iframe to a post.'
 date: 2020-11-23
 ---
 
@@ -30,7 +30,7 @@ interface IFrameArgs {
 }
 ```
 
-Effectiveley you can add any attribute to an IFrame, the only required argument
+Effectively you can add any attribute to an IFrame, the only required argument
 is a `src`.
 
 Keep in mind, for an attribute that has a boolean value, just set the value to

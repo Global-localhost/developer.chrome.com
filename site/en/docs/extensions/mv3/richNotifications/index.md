@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Rich notifications API"
+seoTitle: "Chrome Extensions: Rich notifications API"
 date: 2014-06-25
 updated: 2017-04-27
 description: How to show notifications to your Chrome Extension users.
@@ -20,7 +21,7 @@ Rich notifications come in four different flavors: basic, image, list, and progr
 notifications include a title, message, small icon displayed to the left of the notification
 message, and a contextMessage field, which is displayed as a 3rd text field in a lighter color font.
 
-A basic image:
+A basic notification:
 
 {% Img src="image/BrQidfK9jaQyIHwdw91aVpkPiib2/ZNTfa7vVa0sor219W0dk.png",
        alt="Basic notification", height="175", width="479" %}
@@ -42,7 +43,7 @@ Progress notifications show a progress bar:
 
 ## How they behave {: #behave }
 
-On Chrome OS, notifications show up in a user's system tray, and stay in the system tray until the
+On ChromeOS, notifications show up in a user's system tray, and stay in the system tray until the
 user dismisses them. The system tray keeps a count of all new notifications. Once a users sees the
 notifications in the system tray, the count is reset to zero.
 
@@ -52,11 +53,11 @@ Priorities > 0 are shown for increasing duration and more high priority notifica
 displayed in the system tray.
 
 {% Aside %}
-**Platform difference:** The `code` priority does not affect the order of notifications in Chrome version 59+ on macOS.
+**Platform difference:** The `priority` setting does not affect the order of notifications in Chrome 59 or later on macOS.
 {% endAside %}
 
 In addition to displaying information, all notification types can include up to two action items.
-When users click on an action item, your app can respond with the appropriate action. For example,
+When users click on an action item, your extension can respond with the appropriate action. For example,
 when the user clicks on "Reply", the email app opens and the user can complete the reply:
 
 {% Img src="image/BrQidfK9jaQyIHwdw91aVpkPiib2/CozjuLjsi01Ch9KNBoAY.png",
@@ -68,7 +69,7 @@ To use this API, call the [notifications.create][3] method, passing in the notif
 the `options` parameter:
 
 ```js
-chrome.notifications.create(id, options, creationCallback);
+await chrome.notifications.create(id, options);
 ```
 
 The [notifications.NotificationOptions][4] must include a [notifications.TemplateType][5], which
@@ -79,7 +80,7 @@ defines available notification details and how those details are displayed.
 **Consider integrating with GCM!**
 
 [Keep your users informed][6] all the time, even
-when your app isn't opened. The [gcm-notifications sample][7] shows a simple
+when your extension isn't opened. The [gcm-notifications sample][7] shows a simple
 integration between GCM and Rich Notifications API.
 
 {% endAside %}
@@ -110,17 +111,13 @@ within the notification:
 
 ```js
 var opt = {
-  type: "basic",
+  type: "image",
   title: "Primary Title",
   message: "Primary message to display",
   iconUrl: "url_to_small_icon",
   imageUrl: "url_to_preview_image"
 }
 ```
-
-In Chrome Apps, due to a strict [Content Security Policy][8] these URLs must point to a local
-resource or use a [blob or data URL][9]. Use a 3:2 ratio for your image; otherwise a black border
-frames the image.
 
 ### Create list notification {: #list }
 
@@ -176,16 +173,16 @@ function replyBtnClick {
 }
 ```
 
-Consider including event listeners and handlers within the [event page][12], so that notifications
-can pop-up even when the app or extension isn't running.
+Consider including event listeners and handlers within the service worker, so that notifications
+can pop-up even when the extension isn't running.
 
 [1]: https://developers.google.com/web/updates/2017/04/native-mac-os-notifications
 [2]: /docs/extensions/reference/notifications
 [3]: /docs/extensions/reference/notifications#method-create
 [4]: /docs/extensions/reference/notifications#type-NotificationOptions
 [5]: /docs/extensions/reference/notifications#type-TemplateType
-[6]: /docs/extensions/reference/gcm
-[7]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/master/apps/samples/gcm-notifications
+[6]: /docs/extensions/reference/gcm/
+[7]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/master/_archive/apps/samples/gcm-notifications
 [8]: /docs/apps/contentSecurityPolicy
 [9]: /docs/apps/app_external
 [10]: /docs/extensions/reference/events

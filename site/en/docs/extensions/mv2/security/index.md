@@ -1,12 +1,17 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Stay secure"
+seoTitle: "MV2 - Stay secure [Deprecated]"
 date: 2018-03-06
 updated: 2019-07-17
 description: How to keep your Chrome Extension secure.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Aside 'warning' %}
+You're viewing the deprecated Manifest V2 version of this article. See [Manifest V3 - Stay secure](/docs/extensions/mv3/security/) for the MV3 equivalent.
+
+The Chrome Web Store no longer accepts Manifest V2 extensions. Follow the [Manifest V3 Migration guide](/docs/extensions/migrating) to convert your extension to Manifest V3.
+{% endAside %}
 
 Extensions have access to special privileges within the browser, making them an appealing target for
 attackers. If an extension is compromised, _every_ user of that extension becomes vulnerable to
@@ -28,7 +33,7 @@ membership requests from unknown persons.
 ## Never use HTTP, Ever {: #https }
 
 When requesting or sending data, avoid an HTTP connection. Assume that any HTTP connections will
-have eavesdroppers or contain modifications. HTTPS should always be prefered, as it has built-in
+have eavesdroppers or contain modifications. HTTPS should always be preferred, as it has built-in
 security circumventing most [man-in-the-middle attacks][4].
 
 ## Request minimal permissions {: #permissions }
@@ -272,7 +277,7 @@ function sanitizeInput(input) {
 [17]: #sanitize
 [18]: /messaging#cross-site-scripting
 [19]: /xhr#xhr-vs-content-scripts
-[20]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+[20]: https://developer.mozilla.org/docs/Web/API/Fetch_API
 [21]: /tabs#method-create
 [22]: /runtime#event-onMessageExternal
 [23]: /runtime#event-onMessage

@@ -22,6 +22,14 @@ date: 2021-01-27
 updated: 2021-01-28
 
 # Optional
+# Indicate this content is outdated and no longer accurate
+is_outdated: true
+
+# Optional
+# Include a new material URL when this content is outdated and no longer accurate
+new_available_content_url: /docs/handbook/how-to/add-a-blog-post/
+
+# Optional
 # How to add a new author
 # https://developer.chrome.com/docs/handbook/how-to/add-an-author/
 authors:
@@ -30,7 +38,7 @@ authors:
   - kaycebasques
 
 # Optional
-# How to a new tag
+# How to add a new tag
 # https://developer.chrome.com/docs/handbook/how-to/add-a-tag/
 tags:
   - privacy
@@ -41,9 +49,29 @@ tags:
 # https://developer.chrome.com/docs/handbook/how-to/add-media/
 hero: 'image/BrQidfK9jaQyIHwdw91aVpkPiib2/EnMzOm0mBytBA3AzlCG6.png'
 
-# Required if there is a hero image
+# Optional
+# Hero YouTube video ID, only applies if hero is unset
+# hero_youtube_id: 'PupwBARjaYU'
+
+# Optional
+# You can provide an optional cropping of your hero image to be used as a
+# thumbnail. Note the alt text will be the same for both the thumbnail and
+# the hero.
+#
+# Thumbnail images should be at least 828 x 416
+#
+# This field is required if hero_youtube_id is used.
+#
+# thumbnail: 'image/BrQidfK9jaQyIHwdw91aVpkPiib2/EnMzOm0mBytBA3AzlCG6.png'
+
+# Required if there is a hero or social image
 alt: >
-  An alternative text description of your hero image.
+  An alternative text description of your hero or social image.
+
+# Optional
+# Image sharing on social media should be at least 828 x 416
+# https://developer.chrome.com/docs/handbook/how-to/add-media/
+# sharing_image: 'image/BrQidfK9jaQyIHwdw91aVpkPiib2/EnMzOm0mBytBA3AzlCG6.png'
 ---
 
 A few rules:
@@ -53,8 +81,8 @@ A few rules:
 - Make sure all of your images have `alt` text unless they are purely
   decorative.
 - Make sure authors appear in the `authorsData.json` file and that they have
-  uploaded a headshot to our image CDN. See [How to add an author](https://developer.chrome.com/docs/handbook/how-to/add-an-author/).
-- Make sure tags have been added to `supportedTags.json` and `tags.yml`. See [How to add a tag](https://developer.chrome.com/docs/handbook/how-to/add-a-tag/).
+  uploaded a headshot to our image CDN. See [How to add an author](/docs/handbook/how-to/add-an-author/).
+- Make sure tags have been added to `tags.yml`. See [How to add a tag](/docs/handbook/how-to/add-a-tag/).
 - Code blocks should use triple backticks and include a language name. Example:
 
 ```html

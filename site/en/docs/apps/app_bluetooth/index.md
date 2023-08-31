@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Bluetooth"
+seoTitle: "Chrome Apps Bluetooth [Deprecated]"
 date: 2014-03-11
 updated: 2017-02-18
 description: How to communicate with Bluetooth devices from your Chrome App.
@@ -726,13 +727,13 @@ apps to write to this descriptor. Apps should instead use the
 [bluetoothLowEnergy.startCharacteristicNotifications][84] and
 [bluetoothLowEnergy.stopCharacteristicNotifications][85] methods to control notification behavior.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /docs/extensions/reference/bluetooth
 [4]: /docs/extensions/reference/bluetoothSocket
 [5]: /docs/extensions/reference/bluetoothLowEnergy
 [6]: http://www.bluetooth.org
-[7]: https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web
+[7]: /articles/bluetooth/
 [8]: /docs/apps/manifest/bluetooth/
 [9]: /docs/extensions/reference/bluetooth/#method-getAdapterState
 [10]: /docs/extensions/reference/bluetooth/#event-onAdapterStateChanged
@@ -761,7 +762,7 @@ apps to write to this descriptor. Apps should instead use the
 [33]: /docs/extensions/reference/bluetoothSocket#method-create
 [34]: /docs/extensions/reference/bluetooth/#method-getDevice
 [35]: /docs/extensions/reference/bluetoothSocket#method-send
-[36]: https://developer.mozilla.org/en-US/docs/JavaScript_typed_arrays
+[36]: https://developer.mozilla.org/docs/JavaScript_typed_arrays
 [37]: https://updates.html5rocks.com/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
 [38]: /docs/extensions/reference/bluetoothSocket#method-send
 [39]: /docs/extensions/reference/bluetoothSocket#event-onReceive

@@ -1,12 +1,17 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Installing extensions on Linux"
+seoTitle: "MV2 - Installing extensions on Linux [Deprecated]"
 date: 2017-12-14
 updated: 2018-03-23
 description: How to package, host, and update crx files from a personal server.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Aside 'warning' %}
+You're viewing the deprecated Manifest V2 version of this article. See [Manifest V3 - Installing extensions on Linux](/docs/extensions/mv3/linux_hosting/) for the MV3 equivalent.
+
+The Chrome Web Store no longer accepts Manifest V2 extensions. Follow the [Manifest V3 Migration guide](/docs/extensions/migrating) to convert your extension to Manifest V3.
+{% endAside %}
 
 Extensions hosted outside of the [Chrome Web Store][1] can only be installed by Linux users. This
 article describes how to package, host, and update `.crx` files from a personal server. If
@@ -165,7 +170,7 @@ The update manifest returned by the server should be an XML document.
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
-<gupdate xmlns='https://www.google.com/update2/response' protocol='2.0'>
+<gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'>
     <updatecheck codebase='https://myhost.com/mytestextension/mte_v2.crx' version='2.0' />
   </app>
@@ -179,7 +184,7 @@ update manifest:
 <table><tbody><tr><td>appid</td><td>The extension ID is generated based on a hash of the public key, as described in <a href="/linux_hosting#packaging">packaging</a>. An extension's ID is displayed on the <a href="/linux_hosting#extension_management">Extensions Managment Page</a></td></tr><tr><td>codebase</td><td>An HTTPS URL to the <code>.crx</code> file.</td></tr><tr><td>version</td><td>Used by the client to determine whether it should download the <code>.crx</code> file specified by <code>codebase</code>. It should match the value of "version" in the <code>.crx</code> file's <code>manifest.json</code> file.</td></tr></tbody></table>
 
 The update manifest XML file may contain information about multiple extensions by including multiple
-<app> elements.
+&lt;app> elements.
 
 ### Testing {: #testing }
 
@@ -203,11 +208,11 @@ same URL running dynamic server-side code instead of a static XML file.
 
 The format of the request parameters is:
 
-`?x=_<extension_data>_`
+`?x=EXTENSION_DATA`
 
-Where `_<extension_data>_` is a URL-encoded string of the format:
+Where `EXTENSION_DATA` is a URL-encoded string of the format:
 
-`_id=<id>_&v=_<version>_`
+`id=EXTENSION\_ID&v=EXTENSION\_VERSION`
 
 For example, two extensions point to the same update URL (`https://test.com/extension_updates.php`):
 

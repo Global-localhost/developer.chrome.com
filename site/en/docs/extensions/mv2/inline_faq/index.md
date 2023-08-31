@@ -1,12 +1,13 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Inline-installation deprecation migration FAQ"
+seoTitle: "MV2 - Inline-installation deprecation migration FAQ [Deprecated]"
 date: 2018-06-12
 updated: 2018-08-23
 description: Frequently asked questions about the deprecation of inline installations for Chrome Extensions.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Partial 'extensions/mv2-legacy-page.md' %}
 
 As of 06/12/2018, inline installation is deprecated. For more information, read our [Chromium Blog
 post][1].
@@ -48,7 +49,7 @@ will throw a JavaScript TypeError. You should remove any calls to the API method
 
 When your site calls `chrome.webstore.install()`, Chrome will no longer trigger a dialog immediately
 but will instead open a new foreground tab to the details page of the Chrome WebStore (i.e.
-https://chrome.google.com/webstore/detail/<item-id>). From there, the user can go through the
+`https://chrome.google.com/webstore/detail/EXTENSION_ID`). From there, the user can go through the
 standard installation process by clicking "install", and a dialog will prompt the user to read
 permissions and install or cancel. After the dialog is dismissed, the tab will remain on the Chrome
 Web Store.
@@ -73,7 +74,7 @@ between the extension and your web site. This can be done through extension mess
 ```js
 // JS running on https://example.com
 try {
-  chrome.runtime.sendMessage('<extension id>', <message>, function() {
+  chrome.runtime.sendMessage('EXTENSION_ID', MESSAGE, function() {
     if (chrome.runtime.lastError) {
       // Extension is not installed.
     }
@@ -82,6 +83,11 @@ try {
   // Extension is not installed.
 }
 ```
+
+Replace the following:
+
+- <code><var>EXTENSION_ID</var></code>: the ID of your extension.
+- <code><var>MESSAGE</var></code>: The message string or object to send to the extension.
 
 ### How do I trigger an informational page after installation? {: #trigger }
 

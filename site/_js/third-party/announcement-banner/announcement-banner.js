@@ -4,20 +4,28 @@ class Banner extends HTMLElement {
     // after this class is added—this prevents ghost clicks on the button before
     // the event listener is added.
     this.setAttribute('active', '');
-
-    const button = this.querySelector('[data-banner-close-btn]');
-    /** @type {HTMLElement} */ (button).addEventListener('click', () => {
-      this.savePreference();
-      this.close();
+    this.addEventListener('click', e => {
+      const buttonClicked = /** @type {HTMLElement} */ (e.target).closest(
+        '[data-banner-close-btn]'
+      );
+      if (buttonClicked) {
+        this.savePreference(buttonClicked);
+        this.close();
+      }
     });
   }
 
-  savePreference() {
+  savePreference(button) {
     const storageKey = this.getAttribute('storage-key') || '';
-    const cta = this.querySelector('a[href]');
+    const cta = button.getAttribute('storage-value');
     if (cta) {
-      const ctaUrl = cta.getAttribute('href') || '';
-      localStorage.setItem(storageKey, ctaUrl);
+      localStorage.setItem(storageKey, cta);
+    } else {
+      const hrefCta = this.querySelector('a[href]');
+      if (hrefCta) {
+        const ctaUrl = hrefCta.getAttribute('href') || '';
+        localStorage.setItem(storageKey, ctaUrl);
+      }
     }
   }
 

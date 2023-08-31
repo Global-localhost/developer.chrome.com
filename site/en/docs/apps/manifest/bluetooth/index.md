@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - Bluetooth"
+seoTitle: "Chrome Apps Manifest - Bluetooth [Deprecated]"
 date: 2014-03-11
 updated: 2014-10-31
 description: Reference documentation for the bluetooth property of manifest.json.
@@ -69,7 +70,7 @@ API.
   If `true`, gives permission to an app to use the advertisement functions in the
   [bluetoothLowEnergy][6] API
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /apps/bluetooth
 [4]: /apps/bluetoothSocket

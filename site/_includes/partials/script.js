@@ -16,34 +16,35 @@
 
 /**
  * @fileoverview This is inline script run on every page.
+ *
+ * Note that this is included by 11ty, so { { } } (without spaces)'s are expanded.
  */
 
 /* eslint-disable no-undef */
 // @ts-nocheck
 (function () {
-  window.ga =
-    window.ga ||
-    function () {
-      (ga.q = ga.q || []).push(arguments);
-    };
-  ga.l = +new Date();
-  ga('create', '{{ analytics.id }}');
-  ga('set', 'transport', 'beacon');
-  ga('set', 'page', window.location.pathname);
-  // nb. Analytics requires dimension values to be strings.
-  ga(
-    'set',
-    '{{ analytics.dimensions.TRACKING_VERSION }}',
-    '{{ analytics.TRACKING_VERSION }}'
-  );
-  ga('send', 'pageview');
-
+  // Check if the user has accepted cookies. If so, set an attribute on
+  // the html element which will hide the banner.
   try {
-    const ctaUrl = 'https://policies.google.com/technologies/cookies';
-    const savedCtaUrl = localStorage.getItem('user-cookies');
+    const savedCookiesValue = localStorage.getItem('user-cookies');
 
-    if (savedCtaUrl === ctaUrl) {
-      document.documentElement.classList.add('banner--hide');
+    if (savedCookiesValue === 'accepts' || savedCookiesValue === 'rejects') {
+      document.documentElement.setAttribute('data-cookies-answered', '');
+    }
+  } catch (e) {
+    // ignore
+  }
+
+  // If we're displaying a promotional banner, check if the user has dismissed
+  // it. If so, set an attribute on the html element to hide the banner.
+  // Note that it's possible for a banner to have more than one action but
+  // we always use the url from the first action as the localStorage value.
+  try {
+    const bannerCtaUrl = '{{ banner.actions[0].href|safe }}';
+    const savedBannerCtaUrl = localStorage.getItem('user-banner');
+
+    if (savedBannerCtaUrl === bannerCtaUrl) {
+      document.documentElement.setAttribute('data-banner-dismissed', '');
     }
   } catch (e) {
     // ignore

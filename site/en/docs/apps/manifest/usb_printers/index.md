@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - USB Printers"
+seoTitle: "Chrome Apps Manifest - USB Printers [Deprecated]"
 date: 2015-05-07
 #updated: TODO
 description: Reference documentation for the usb_printers property of manifest.json.
@@ -41,7 +42,7 @@ The `usbPrinters` manifest property declares which USB printers are supported by
   the provided filters. A `vendorId` is required and only one of `productId` or `interfaceClass` may
   be provided.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /apps/printerProvider
 [4]: /apps/usb#type-DeviceFilter

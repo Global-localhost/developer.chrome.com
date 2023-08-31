@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "External Content"
+seoTitle: "External Content [Deprecated]"
 date: 2012-09-17
 updated: 2018-05-14
 description: How to present external content in your Chrome App.
@@ -238,7 +239,7 @@ window.addEventListener('message', messageHandler);
 
 For more details, check out the [sandbox][11] sample.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: app_architecture#security
 [4]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/sandbox

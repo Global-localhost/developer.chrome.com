@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - Default Locale"
+seoTitle: "chrome Apps Manifest - Default Locale [Deprecated]"
 #date: TODO
 #updated: TODO
 #description: TODO
@@ -18,6 +19,6 @@ Specifies the subdirectory of `_locales` that contains the default strings for t
 field is **required** in extensions that have a `_locales` directory; it **must be absent** in
 extensions that have no `_locales` directory. For details, see [Internationalization][3].
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /extensions/i18n

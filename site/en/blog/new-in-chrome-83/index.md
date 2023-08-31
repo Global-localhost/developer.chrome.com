@@ -35,7 +35,7 @@ Here's what you need to know:
   a great user experience on the web.
 * And [more](#more).
 
-I'm [Pete LePage](https://twitter.com/petele), working and shooting from home,
+I'm [Pete LePage](https://petelepage.com/), working and shooting from home,
 let's dive in and see what's new for developers in Chrome 83!
 
 {% Aside %}
@@ -257,7 +257,7 @@ Curious about what's coming in the future? Check out the
 This covers only some of the key highlights. Check the links below for
 additional changes in Chrome 83.
 
-* [What's new in Chrome DevTools (83)](https://developers.google.com/web/updates/2020/03/devtools)
+* [What's new in Chrome DevTools (83)](/blog/new-in-devtools-83)
 * [Chrome 83 deprecations & removals](https://developers.google.com/web/updates/2020/04/chrome-83-deps-rems)
 * [ChromeStatus.com updates for Chrome 83](https://www.chromestatus.com/features#milestone%3D83)
 * [What's new in JavaScript in Chrome 83](https://v8.dev/blog/v8-release-83)

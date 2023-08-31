@@ -1,12 +1,13 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Shared modules"
+seoTitle: "MV2 - Shared modules [Deprecated]"
 date: 2015-01-05
 updated: 2018-05-22
 description: How to share code between Chrome Extensions.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Partial 'extensions/mv2-legacy-page.md' %}
 
 _Shared Modules_ are permissionless collections of resources that can be shared between other
 extensions and apps. Common uses of Shared Modules are:
@@ -60,7 +61,7 @@ particular Shared Modules:
 
 ## Accessing resources {: #accessing_resources }
 
-Shared Module resources are accessed by a reserved path _\_modules/<shared_module_id>_ in the root
+Shared Module resources are accessed by a reserved path _\_modules/SHARED\_MODULE\_ID_ in the root
 of your importing extension. For example, to include the script 'foo.js' from a Shared Module with
 ID "cccccccccccccccccccccccccccccccc", use this path from the root of your extension:
 

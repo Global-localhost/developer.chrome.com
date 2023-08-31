@@ -24,7 +24,7 @@ Chrome 88 is starting to roll out to stable now.
 
 Here's what you need to know:
 
-* You can now upload extensions using [manifest v3](#mv3) to the Chrome Web
+* You can now upload extensions using [manifest V3](#mv3) to the Chrome Web
   Store.
 * The [`aspect-ratio`](#aspect-ratio) CSS property makes it easy to set the
   aspect ratio on any element.
@@ -34,17 +34,17 @@ Here's what you need to know:
 * All the videos from [Chrome Dev Summit](#cds) are up.
 * And, there's [plenty more](#more).
 
-I'm [Pete LePage](https://twitter.com/petele), working, and shooting
+I'm [Pete LePage](https://petelepage.com/), working, and shooting
 from home, let's dive in and see what's new for developers in Chrome 88!
 
-## Manifest v3 {: #mv3 }
+## Manifest V3 {: #mv3 }
 
-Chrome 88 now supports extensions built with manifest v3, and you
-can upload them to the Chrome Web Store. Manifest v3 is a new extension
+Chrome 88 now supports extensions built with Manifest V3, and you
+can upload them to the Chrome Web Store. Manifest V3 is a new extension
 platform, that makes Chrome extensions more secure, performant, and privacy
 respecting, by default.
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/XDUO2gCu8GcokIqjB6KE.png", alt="", className="float-right", height="648", width="800" %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/XDUO2gCu8GcokIqjB6KE.png", alt="", class="float-right", height="648", width="800" %}
 
 For example, it disallows remotely hosted code, which helps Chrome Web Store
 reviewers better understand what risks an extension poses. And should allow you
@@ -59,7 +59,7 @@ share their data, in a future release we will be adopting a new install flow
 that allows users to withhold sensitive permissions at install time.
 
 Check out [developer.chrome.com](/docs/extensions/mv3/)
-for complete details, and how to migrate your current extension to manifest v3.
+for complete details, and how to migrate your current extension to Manifest V3.
 
 <br style="clear:both;">
 
@@ -122,7 +122,7 @@ for all the details.
 You can now use Play Billing in your Trusted Web Activity to sell digital
 goods and subscriptions using the new Digital Goods API. It's available as an
 origin trial in Chrome 88 on Android, and we expect it to expand the origin
-trial to Chrome OS in the next release.
+trial to ChromeOS in the next release.
 
 Once your accounts are set-up, update your Trusted Web Activity to enable Play
 billing, and create your digital goods in the Play Developer Console. Then,
@@ -165,7 +165,7 @@ And of course there's plenty more.
 This covers only some of the key highlights. Check the links below for
 additional changes in Chrome 88.
 
-* [What's new in Chrome DevTools (88)](https://developers.google.com/web/updates/2020/11/devtools)
+* [What's new in Chrome DevTools (88)](/blog/new-in-devtools-88)
 * [Chrome 88 deprecations & removals](https://developers.google.com/web/updates/2020/12/chrome-88-deps-rems)
 * [ChromeStatus.com updates for Chrome 88](https://www.chromestatus.com/features#milestone%3D88)
 * [What's new in JavaScript in Chrome 88](https://v8.dev/blog/v8-release-88)

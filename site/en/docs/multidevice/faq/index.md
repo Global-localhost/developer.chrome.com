@@ -15,8 +15,8 @@ used in Chrome for Android using the instructions [here][1].
 
 ### Does Chrome for Android follow the same release cycles as desktop Chrome?
 
-They share the same release cycle and release numbering. Not2 all features in desktop Chrome are
-available in the corresponding version of Chrome for Android, however.
+They share the same release cycle and release numbering. However, not all features in desktop Chrome are
+available in the corresponding version of Chrome for Android.
 
 ### Can I make Chrome for Android auto-update?
 
@@ -128,9 +128,9 @@ future.
 [1]: http://code.google.com/p/chromium/wiki/AndroidBuildInstructions
 [2]: http://code.google.com/p/chromium/issues/list?q=label%3AOS-Android
 [3]: https://chromestatus.com
-[4]: /docs/multidevice/webview/overview/
+[4]: /docs/multidevice/webview/
 [5]: http://blogs.adobe.com/conversations/2011/11/flash-focus.html
-[6]: /docs/multidevice/android/overview/
+[6]: /docs/multidevice/android/
 [7]: /devtools/docs/remote-debugging
 [8]: /multidevice/android/installtohomescreen.html
 [9]: /docs/multidevice/user-agent/

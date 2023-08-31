@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "User Authentication"
+seoTitle: "Chrome Apps - User Authentication [Deprecated]"
 date: 2012-09-17
 updated: 2018-05-14
 description: How to authenticate users in your Chrome App.
@@ -233,7 +234,7 @@ chrome.identity.launchWebAuthFlow(
   function(redirect_url) { /* Extract token from redirect_url */ });
 ```
 
-The <url-to-do-auth> is whatever the URL is to do auth to the provider from a website. For example,
+The `<url-to-do-auth>` is whatever the URL is to do auth to the provider from a website. For example,
 let us say that you are performing OAuth2 flow with a provider and have registered your app with
 client id 123456789012345 and you want access to user's photos on the provider's website:
 `https://www.website-of-provider-with-user-photos.com/dialog/oauth?client_id=123456789012345& redirect_uri=https://abcdefghijklmnopqrstuvwxyzabcdef.chromiumapp.org/provider_cb&response_type=token&scope=user_photos`
@@ -260,7 +261,7 @@ The best practice we suggest is to use silent mode when there is no user gesture
 interactive mode if there is a user gesture (for example, the user clicked the Sign In button in
 your app). Note that we do not enforce gesture requirement.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: identity
 [4]: https://github.com/GoogleChrome/chrome-app-samples#_feature_identity

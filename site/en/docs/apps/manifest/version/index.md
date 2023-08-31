@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - Version"
+seoTitle: "Chrome Apps Manifest - Version [Deprecated]"
 #date: TODO
 #updated: TODO
 #description: TODO
@@ -49,6 +50,6 @@ Here are some examples of version names:
 
 If no version_name is present, the version field will be used for display purposes as well.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: /extensions/autoupdate

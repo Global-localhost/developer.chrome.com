@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest - Sandbox"
+seoTitle: "Chrome Apps Manifest - Sandbox [Deprecated]"
 #date: TODO
 #updated: TODO
 #description: TODO
@@ -62,9 +63,9 @@ extension's [default Content Security Policy][7].
 
 Sandboxed page may only be specified when using [`manifest_version`][8] 2 or above.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
-[3]: /apps/webview_tag
+[3]: /extensions/reference/webviewTag/
 [4]: /extensions/contentSecurityPolicy
 [5]: https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-sandbox
 [6]: /extensions/sandboxingEval

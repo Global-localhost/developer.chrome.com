@@ -1,9 +1,6 @@
-require('dotenv').config();
-const CacheAsset = require('@11ty/eleventy-cache-assets');
 const escapeStringRegexp = require('escape-string-regexp');
-
-const url =
-  'https://storage.googleapis.com/chrome-gcs-uploader.appspot.com/tweets.json';
+const fs = require('fs');
+const path = require('path');
 
 /**
  * Insert media (images/videos) into a tweet.
@@ -132,19 +129,17 @@ const formatEntities = tweet => {
  * @return {Promise<TwitterTweet[]>}
  */
 module.exports = async () => {
-  let tweets = process.env.CI
-    ? require('./tweets-sample.json')
-    : await CacheAsset(url, {
-        duration: '1h',
-        type: 'json',
-      }).catch(e => {
-        console.warn(e);
-        if (process.env.NODE_ENV === 'production') {
-          return undefined;
-        } else {
-          return require('./tweets-sample.json');
-        }
-      });
+  let tweets = [];
+  try {
+    const tweetsFile = path.join(__dirname, '../../external/data/tweets.json');
+    tweets = /** @type {TwitterTweet[]} */ (
+      JSON.parse(fs.readFileSync(tweetsFile, 'utf-8'))
+    );
+  } catch (e) {
+    console.warn(
+      'Error reading tweets.json. Maybe it does not exist? See https://github.com/GoogleChrome/developer.chrome.com/pull/6384'
+    );
+  }
 
   // Remove polls
   tweets = tweets.filter(tweet => !tweet.entities.polls);

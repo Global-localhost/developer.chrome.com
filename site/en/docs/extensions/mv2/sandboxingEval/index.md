@@ -1,12 +1,17 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Using eval in Chrome extensions"
+seoTitle: "MV2 - Using eval in Chrome extensions [Deprecated]"
 date: 2012-09-18
 updated: 2014-05-22
 description: How to use eval() in a Chrome Extension.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Aside 'warning' %}
+You're viewing the deprecated Manifest V2 version of this article. See [Manifest V3 - Using eval in Chrome extensions](/docs/extensions/mv3/sandboxingEval/) for the MV3 equivalent.
+
+The Chrome Web Store no longer accepts Manifest V2 extensions. Follow the [Manifest V3 Migration guide](/docs/extensions/migrating) to convert your extension to Manifest V3.
+{% endAside %}
 
 Chrome's extension system enforces a fairly strict default [**Content Security Policy (CSP)**][1].
 The policy restrictions are straightforward: script must be moved out-of-line into separate
@@ -163,6 +168,6 @@ time.
 [9]: /docs/apps/event_pages
 [10]: /docs/extensions/examples/howto/sandbox/eventpage.html
 [11]: /docs/extensions/examples/howto/sandbox/eventpage.js
-[12]: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+[12]: https://developer.mozilla.org/docs/Web/API/Window/postMessage
 [13]: /docs/extensions/mv2/desktop_notifications
 [14]: http://www.youtube.com/watch?v=GBxv8SaX0gg

@@ -6,8 +6,14 @@ const {
 } = require('./lib/links');
 const {hashForProd} = require('./lib/hash');
 const {findByUrl, findByProjectKey} = require('./lib/find');
-const {formatDate, formatDateLong, formatDateShort} = require('./lib/date');
+const {
+  formatDate,
+  formatDateLong,
+  formatDateShort,
+  formatDateNumeric,
+} = require('./lib/date');
 const {buildBreadcrumbs} = require('./lib/breadcrumbs');
+const {randomThumbnail} = require('./lib/randomThumbnail');
 
 module.exports = {
   join,
@@ -21,5 +27,7 @@ module.exports = {
   formatDate,
   formatDateLong,
   formatDateShort,
+  formatDateNumeric,
   buildBreadcrumbs,
+  randomThumbnail,
 };

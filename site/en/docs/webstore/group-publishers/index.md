@@ -1,115 +1,202 @@
 ---
 layout: "layouts/doc-post.njk"
-title: Set up Group Publishing
+title: Set up a group publisher
 date: 2020-06-20
+updated: 2022-12-12
 description: How to share ownership of your Chrome Web Store items with other developers.
 ---
+<!--lint disable code-block-style-->
 
 You can share ownership of your items in Google Chrome Web Store with other developers by setting up
-group publishing. With group publishing, you can add developers to a Google Group, who can then act
-on your behalf. They'll have access to all the items you own and can make any changes to them that
-you can make.
+a *group publisher*. This page explains how group publishers work and how to set one up.
+
+
+## About group publishers
+
+Use a group publisher to establish an entity that owns Chrome Web Store items, allowing multiple
+developers to share ownership of a published item. Consider how this differs from the more basic
+individual publisher role.
+
+{% Aside %}
+When you [register as a Chrome Web Store developer][cws-register], your developer account is
+automatically enrolled as an individual publisher.
+{% endAside %}
+
+**Individual publisher** When an individual developer acts as a publisher of an item, only that
+developer can upload and publish updates to the item. The following diagram describes this scenario:
+
+{% Img src="image/SHhb2PDKzXTggPGAYpv8JgR81pX2/VCMoTUiD0xFT5pZVj3kO.svg", alt="Diagram of individual
+publishing process", width="800", height="145" %}
+
+**Group publisher** By setting up a *group publisher*, you use a Google Group to associate multiple
+developers into a composite entity. Any Chrome Web Store developer who belongs to the group can
+publish updates to the item, as depicted in the following diagram:
+
+{% Img src="image/SHhb2PDKzXTggPGAYpv8JgR81pX2/pgzFlq6rxiKFQ5NjYlBi.svg", alt="Diagram of group
+publishing process", width="800", height="395" %}
+
+Group publishers provide a number of benefits for organizations and development teams:
+
+* It's a convenient way for teams to share the publishing capability among all their members.
+* It's easy to transfer ownership of items when a developer leaves the organization.
+* It avoids unintended deletion of items that can happen when a developer leaves the org (because
+  their account gets deleted and that individual account was the item's publisher).
+
 
 ## Before you set up group publishing
 
 Keep these important notes in mind:
 
-- Creating a Group Publisher is not reversible: a new Group Publisher account is created and the
-  Google Group you select is permanently linked to that account.
-- You cannot change which group is linked to the Group Publisher account.
-- You still retain your personal publishing account and can publish from either your group or
-  personal account.
+* A Chrome Web Store developer account can only create one group publisher,
+  **ever**. You cannot replenish this quota, even if you delete the group. 
+* Once the group publisher account is created, the Google Group you select 
+  remains linked to that account. Only the group owner or manager (or the last
+  remaining group member) can delete the group publisher, unlinking the Google 
+  Group from the Chrome Web Store.
 
-## Set up group publishing
+    {% Aside "warning" %}
+    Deleting the group publisher and the Google Group does not restore your
+    lifetime quota of one group publisher activation.
+    {% endAside %}
 
-To set up group publishing, follow these steps:
+* You can be a *member* of any number of group publishers.
 
-1.  Sign in to your [Chrome Web Store dashboard page][1].
-2.  If you don't see a drop-down at the top of dashboard page, go to step 3.
-3.  If you do see a drop-down, you've already been added to group publishing by another developer.
-    From the drop-down, select your own account instead of the group publisher account.
-4.  At the bottom of the dashboard page, you'll see one of two links:
-    - **Google Group publishing: Choose existing group or create new group** This link shows up if
-      you're the owner of one or more Google Groups, and those groups haven't already been linked to
-      a publisher account.
-    - **Google Group publishing: Create new group** You'll see this link if you aren't an owner of
-      any Google Groups, or if all the groups that you are an owner of have already been linked to
-      other publisher accounts.
-5.  You can do one of the following:
-    - Create a new Google group and link to this new group: 1. Click **Create new group**. You'll
-      see the Google Groups page in a new tab. 2. Create your new group. 3. Reload the Chrome Web
-      Store dashboard page in your browser, then follow the steps below under "Link to an existing
-      Google Group."
-    - Link to an existing Google group: 1. Click **Choose existing group**. 2. Select a group from
-      the drop-down. (We recommend linking to a group that you're using only for group publishing of
-      your items.) 3. Click **OK** in the confirmation box. 4. Click **Save Changes** at the bottom
-      of dashboard page.
+* You cannot change which group is linked to the group publisher account.
+* You still retain your individual publisher account and can publish from either your group or
+  your individual account.
 
-After you complete the steps above, a new Group Publisher account is created. The Google Group you
-selected or created is linked to this new publisher account, and the group email is the new
-publisher account's email.
+## Create a group publisher
 
-## After you set up group publishing
+To create a group publisher, follow these steps:
 
-Your dashboard page will show the new Group Publisher account and the linked Google Group. You can
-[add or remove developers][2]. **All members of the linked group can act on behalf of the new
-publisher account**. For example, they can edit items, publish items, edit the publisher's display
-name, etc.
+1. If you have not already done so, create a private [Google Group][google-group].
 
-## Things to note
+1. Make sure that the Google Group has mail turned on, as shown below:
 
-- Each member of the group must pay the developer fee.
-- You can only set up group publishing once and create one group publisher account.
-- You must be the owner or administrator of a Google Group to link the group. The drop-down list on
-  the dashboard page only shows groups that you're a direct member of (for example, if you are a
-  member of Group A and Group A is a member of Group B, you are not a direct member of Group B, and
-  Group B is not shown on the drop-down list).
-- Once you finish the group publishing setup, it can take up to 30 minutes for developers in your
-  group to see the changes.
-- Your domain is the default domain of the new group publisher account. A group publisher can
-  publish items either to the public or to its default domain. A publisher cannot publish to other
-  domains.
-- A developer can act on behalf of multiple publishers if the developer is a member of multiple
-  Google Groups linked to publishers.
-- If a merchant account is needed or is already set up, any member of the group can choose to
-  re-link their own merchant accounts to the publisher on the dashboard page.
-- When you want to create new store items, you will have the opportunity to choose whether to make
-  them part of your personal publisher account or the group publisher account before you upload the
-  item.
+    {% Img src="image/BhuKGJaIeLNPW9ehns59NfwqKxF2/TgfQPjITmgIX0aYcDl1L.png", alt="Screenshot of Allow
+        posting by email option", width="685", height="179" %}
 
-## Move existing items to a Group Publisher account
+1. Make sure that the Google Group, has "Message moderation" set to "No moderation" and "Spam message handling" set to "Post suspicious messages to the group" to ensure that CWS notifications will reach all members of the group.
 
-Once you set up a Group Publisher account (or once you're added as a member of a Google Group linked
-to a Group Publisher account), you can transfer your own items to the Group Publisher.
+    {% Img src="image/BhuKGJaIeLNPW9ehns59NfwqKxF2/DSSEzpIU7RmSOkzXapeX.png", alt="Screenshot of Message moderation and Spam message handling", width="655", height="274" %}
 
-Remember that once you move items to a Group Publisher account, you won't be able to move them back
-to your personal publishing account.
+1. Make sure that the Google Group doesn't allow anyone to join without being
+validated. Use either "Invited users only" or "Anyone on the web can ask", as shown below:
 
-To transfer items to a Group Publisher account:
+    {% Img src="image/BhuKGJaIeLNPW9ehns59NfwqKxF2/o6vgTMnt8Q1T6t91dPzk.png", alt="Screenshot of
+        selecting the only-invited-users option", width="714", height="214" %}
 
-1.  Sign into your [Chrome Web Store dashboard page][3].
-2.  From the publisher selection drop-down at the top of the dashboard, select the Group Publisher
-    you want to transfer your items to. It will load the dashboard page for the selected Group
-    Publisher.
-3.  Select **Transfer existing item(s)**, next to the **Add new item** button. You'll see a page
-    with a list of items you own personally.
-4.  Select the item(s) you want to transfer, and click the **Transfer** link to the right of the
-    item.
-5.  Click **Transfer** in the confirmation box.
+    {% Aside %}
+      After you finish the group publishing setup, it can take up to thirty minutes for developers in your
+      group to see the changes.
+    {% endAside %}
 
-After your items are moved, you'll see the item transfer page again. Any items you transferred will
-no longer be on the page. At the top of the page, you'll see a yellow bar with the status of the
-last item transfer.
+1. Sign in to the [Chrome Web Store Developer Dashboard][devconsole] and go to the **Account** tab.
+
+1. Scroll down to the **Group publisher memberships** field:
+
+    {% Img src="image/SHhb2PDKzXTggPGAYpv8JgR81pX2/ozixwtnU0bikOAzhBaPM.png", alt="Screenshot of the
+    Google group publishing field", width="800", height="291" %}
+
+1. Select the Google Group that you want to associate with the new group
+publisher, then click **Create group publisher**.
+
+These steps create a new group publisher account. The Google Group you selected is linked to this
+new publisher account, and the group email is the new group publisher account's email.
+
+## Adding developers to or removing them from the group publisher
+
+Your Developer Dashboard will show the new group publisher account and the linked Google Group. Use
+[Google Groups][google-group] to add or remove developers. After adding or removing a member to
+your publishing group, you will need to manually sync the Developer Dashboard with your Google Group.
+
+To sync the Developer Dashboard:
+
+1. Sign in to the [Chrome Web Store Developer Dashboard][devconsole] and select your group from the
+**Publisher** list. It's located at the top, right of the screen.
+
+    {% Img src="image/sQ51XsLqKMgSQMCZjIN0B7hlBO02/1jxISIzNsqVoRbMc8qio.png", alt="Screenshot of the publisher list.", width="292", height="48" %}
+
+1. Go to the **Account** tab.
+
+1. Scroll down to **Group publisher memberships**.
+
+    {% Img src="image/sQ51XsLqKMgSQMCZjIN0B7hlBO02/KsaEiqyPik0PaecQ9gqh.png", alt="Screenshot of the Group publisher membership field", width="800", height="325" %}
+
+1. Click **Sync**.
+
+For a group member to publish updates, that member must [register as a Chrome Web Store developer][cws-register] and pay the one-time registration fee.
+
+{% Aside "caution" %}
+Be careful with the membership of your group publisher groups. Any Chrome Web Store developer who is
+a member of the linked group can act on behalf of the new publisher account. For example, they can
+edit items, publish items, and edit the publisher's display name. 
+{% endAside %}
+
+To maintain security over your items, we recommend that you manage your group carefully.
+
+* Create a Google Group for exclusive use as the group publisher; don't use an existing group that
+  you also use for other purposes.
+* Keep the group private using the "Only invited users" option.
+* Minimize the number of members of the group.
+
+{% Aside "gotchas" %}
+Group publishing does not recognize "indirect" membership of Google Groups: only explicit
+  members of a group can publish. For example, suppose that:
+* You are a member of Group A, and
+* Group A is a member of Group B, which is a group publisher.
+In this case you cannot publish because you are not a direct member of Group B.
+{% endAside %}
+
+## Publishing using a group publisher
+
+In the top right-hand corner of the [Chrome Web Store Developer
+Dashboard][devconsole] is a pull-down that contains the following
+items:
+
+* Your developer user name (your individual publisher)
+* Any group publishers that you are a member of.
+
+Select the publisher you want to use. This displays the items already uploaded for that publisher.
+Any new items that you upload are associated with the selected publisher.
+
+## Move existing items to a group publisher account
+
+Once you set up a group publisher (or once you're added as a member of a Google Group linked to a
+group publisher), you can transfer your own items to the group publisher.
+
+{% Aside 'warning' %}
+Once you move items to a group publisher account, you can't move them back to your individual publishing account.
+{% endAside %}
+
+To transfer an item:
+
+1. In the [Developer Dashboard][devconsole], select the item tab in your individual publisher account.
+1. Open the item that you want to transfer.
+1. Scroll down to the **Store listing** field.
+1. Click the "..." menu in the upper corner, then select **Transfer to group publisher**. The
+following dialog appears:
+
+    {% Img src="image/SHhb2PDKzXTggPGAYpv8JgR81pX2/xMqFS3lPkdW5NWTiO4gJ.png", alt="Screenshot of
+    transfer to group publisher dialog", width="800", height="506" %}
+
+1. Choose carefully (because this is a permanent change) the group publisher you want to transfer
+the item to.
+
+1. Click **Transfer** to confirm the transfer.
+
+To verify that the item was transferred:
+
+1. [Select the group publisher][use-publisher] you transferred the item to.
+1. Check that the item is listed there.
 
 ## Group publishing troubleshooting
 
-- If either your personal publishing account or the Group Publisher account is suspended, you won't
-  be able to transfer items.
-- If the Group Publisher account has reached its published item limit, you won't be able to transfer
-  your published items to this Group Publisher.
-- You can't transfer a paid item to a Group Publisher account that doesn't have a Google Wallet
-  merchant account set up and linked.
+* If either your individual publishing account or the group publisher account is suspended, you won't be able to transfer items.
+* If the group publisher account has reached its published [item limit][items-limit], you won't be able to transfer your published items to this group publisher.
 
-[1]: https://chrome.google.com/webstore/developer/dashboard
-[2]: https://groups.google.com/
-[3]: https://chrome.google.com/webstore/developer/dashboard
+[cws-register]: /docs/webstore/register/
+[devconsole]: https://chrome.google.com/webstore/devconsole
+[items-limit]: /docs/webstore/faq/#faq-gen-29
+[google-group]: https://groups.google.com
+[use-publisher]: #publishing-using-a-group-publisher

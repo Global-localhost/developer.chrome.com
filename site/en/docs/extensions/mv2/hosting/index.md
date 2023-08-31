@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Chrome Web Store"
+seoTitle: "MV2 - Chrome Web Store [Deprecated]"
 date: 2012-09-18
 updated: 2018-06-12
 description: >
@@ -8,7 +9,11 @@ description: >
   that's hosted in the Chrome Web Store.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Aside 'warning' %}
+You're viewing the deprecated Manifest V2 version of this article. See [Manifest V3 - Extension hosting](/docs/extensions/mv3/hosting/) for the MV3 equivalent.
+
+The Chrome Web Store no longer accepts Manifest V2 extensions. Follow the [Manifest V3 Migration guide](/docs/extensions/migrating) to convert your extension to Manifest V3.
+{% endAside %}
 
 Most extensions are hosted in the [Chrome Web Store][1] to best [protect users from malicious
 extensions][2].
@@ -32,14 +37,14 @@ There are three exceptions to the Chrome Web Store hosting rule:
 The Chrome Browser periodically checks for new versions of installed extensions and updates them
 without user intervention.
 
-To release an update to an extension, increase the number in the `"version"` field of the manifest.
+To release an update to an extension, increase the number in the [`version`][version] field of the
+manifest.
 
 ```json
 {
   ...
   "version": "1.5",
   ...
-  }
 }
 ```
 
@@ -48,7 +53,6 @@ To release an update to an extension, increase the number in the `"version"` fie
   ...
   "version": "1.6",
   ...
-  }
 }
 ```
 
@@ -58,11 +62,13 @@ automatically update the extension for users after the new version is published.
 
 [1]: https://chrome.google.com/webstore/category/extensions
 [2]: http://blog.chromium.org/2015/05/continuing-to-protect-chrome-users-from.html
-[3]: /webstore
+[3]: /docs/webstore
 [4]: https://chrome.google.com/webstore/developer/dashboard
-[5]: /webstore/publish
-[6]: https://support.google.com/chrome/a/answer/188453
+[5]: /docs/webstore/publish
+[6]: https://support.google.com/chrome/a/answer/7666985
 [7]: /docs/extensions/mv2/getstarted#unpacked
-[8]: /linux_hosting
-[9]: /hosting_changes
+[8]: /docs/extensions/mv2/linux_hosting
+[9]: /docs/extensions/mv2/hosting_changes
 [10]: https://chrome.google.com/webstore/developer/dashboard
+
+[version]: /docs/extensions/mv2/manifest/version/

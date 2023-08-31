@@ -33,7 +33,7 @@ Here's what you need to know:
 * An origin trial for [`fetch` upload streaming](#fetch-stream) has started.
 * And [more](#more).
 
-I'm [Pete LePage](https://twitter.com/petele), working and shooting from home,
+I'm [Pete LePage](https://petelepage.com/), working and shooting from home,
 let's dive in and see what's new for developers in Chrome 85!
 
 ## Content Visibility {: #content-visibility }
@@ -224,7 +224,7 @@ And [AppCache removal has begun](https://web.dev/appcache-removal/).
 This covers only some of the key highlights. Check the links below for
 additional changes in Chrome 85.
 
-* [What's new in Chrome DevTools (85)](https://developers.google.com/web/updates/2020/06/devtools)
+* [What's new in Chrome DevTools (85)](/blog/new-in-devtools-85)
 * [Chrome 85 deprecations & removals](https://developers.google.com/web/updates/2020/07/chrome-85-deps-rems)
 * [ChromeStatus.com updates for Chrome 85](https://www.chromestatus.com/features#milestone%3D85)
 * [What's new in JavaScript in Chrome 85](https://v8.dev/blog/v8-release-85)

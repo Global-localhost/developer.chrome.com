@@ -169,10 +169,10 @@ name "Hola mundo".
 
 ![Four files: manifest.json and three messages.json files (for es, en, and en_GB).  The es and en files show entries for messages named "extName" and "colores"; the en_GB file has just one entry (for "colores").](i18n-strings.gif)
 
-### How to set your browser's locale
+### How to set your browser's locale {: #how-to-set-browsers-locale}
 
 To test translations, you might want to set your browser's locale. This section tells you how to set
-the locale in [Windows][9], [Mac OS X][10], [Linux][11], and [Chrome OS][12].
+the locale in [Windows][9], [Mac OS X][10], [Linux][11], and [ChromeOS][12].
 
 #### Windows
 
@@ -250,16 +250,16 @@ environment variable and launch Google Chrome. For example:
 LANGUAGE=es ./chrome
 ```
 
-#### Chrome OS
+#### ChromeOS
 
-To change the locale on Chrome OS:
+To change the locale on ChromeOS:
 
 1.  From the system tray, choose **Settings**.
 2.  Under the **Languages and input** section, choose the **Language** dropdown.
 3.  If your language is not listed, click **Add languages** and add it.
 4.  Once added, click the the 3-dot **More actions** menu item next to your language and choose
-    **Display Chrome OS in this language**.
-5.  Click the **Restart** button that appears next to the set language to restart Chrome OS.
+    **Display ChromeOS in this language**.
+5.  Click the **Restart** button that appears next to the set language to restart ChromeOS.
 
 ## Examples
 
@@ -339,23 +339,23 @@ function detectLanguage(inputText) {
 
 For more details on calling `detectLanguage(inputText)`, see the [API reference][20].
 
-[1]: /docs/extensions/mv2/i18n-messages
-[2]: /docs/extensions/mv2/tabs
-[3]: #overview-locales
-[4]: #examples-getMessage
+[1]: /docs/extensions/mv3/i18n-messages
+[2]: /docs/extensions/mv3/manifest
+[3]: #supported-locales
+[4]: #examples-getmessage
 [5]: #overview-predefined
-[6]: /docs/extensions/mv2/i18n-messages
+[6]: /docs/extensions/mv3/i18n-messages
 [7]: https://code.google.com/apis/gadgets/docs/i18n.html#BIDI
-[8]: https://code.google.com/chrome/webstore/docs/i18n.html#localeTable
-[9]: #testing-win
-[10]: #testing-mac
-[11]: #testing-linux
-[12]: #testing-chromeos
+[8]: /docs/webstore/i18n/#choosing-locales-to-support
+[9]: #windows
+[10]: #mac-os-x
+[11]: #linux
+[12]: #chrome-os
 [13]: https://www.chromium.org/developers/creating-and-using-profiles
-[14]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/master/mv2-archive/api/i18n/
-[15]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/master/mv2-archive/extensions/news/
-[16]: /docs/extensions/mv2/samples
-[17]: /docs/extensions/mv2/i18n-messages
+[14]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/_archive/mv2/api/i18n/
+[15]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/_archive/mv2/extensions/news/
+[16]: /docs/extensions/samples/
+[17]: /docs/extensions/mv3/i18n-messages/#placeholders
 [18]: #method-getMessage
 [19]: #method-getAcceptLanguages
 [20]: #method-detectLanguage

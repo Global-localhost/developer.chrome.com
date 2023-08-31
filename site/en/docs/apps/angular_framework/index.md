@@ -1,9 +1,10 @@
 ---
 layout: "layouts/doc-post.njk"
-title: "Build Apps with AngularJS"
+title: "Build Apps with AngularJS" 
+seoTitle: "Build Apps with AngularJS [Deprecated]" 
 date: 2012-11-16
 updated: 2017-03-01
-description: A guide on building Chrome Apps with AngularJS.
+description: A guide on building Chrome Apps with AngularJS. 
 ---
 
 {% Aside 'caution' %}
@@ -548,7 +549,7 @@ gDriveApp.factory('gdocs', function() {
 });
 ```
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: https://angularjs.org/
 [4]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gdrive

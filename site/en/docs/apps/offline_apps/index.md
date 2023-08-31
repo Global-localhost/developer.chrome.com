@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Offline First"
+seoTitle: "Chrome Apps - Offline First [Deprecated]"
 date: 2012-09-17
 updated: 2015-09-25
 description: How to build Chrome Apps that work offline.
@@ -159,7 +160,7 @@ Make sure your app works well under the following circumstances:
 Also make sure that the app saves **no sensitive user data** (such as passwords) on the user's
 machine.
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: storage
 [4]: https://developer.mozilla.org/en/Online_and_offline_events

@@ -1,12 +1,13 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Manifest file format"
+seoTitle: "Manifest V2 file format [Deprecated]"
 date: 2012-09-18
 updated: 2018-04-26
 description: An overview of the manifest.json properties that you can use in your Chrome Extension.
 ---
 
-{% include 'partials/extensions/mv2-legacy-page.md' %}
+{% Partial 'extensions/mv2-legacy-page.md' %}
 
 Every extension has a [JSON][1]\-formatted manifest file, named `manifest.json`, that provides
 important information.
@@ -48,6 +49,8 @@ discusses each field.
   <span class="token property">"<a href="/docs/extensions/mv2/content_scripts">content_scripts</a>"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"<a href="/docs/apps/contentSecurityPolicy">content_security_policy</a>"</span><span class="token operator">:</span> <span class="token string">"policyString"</span><span class="token punctuation">,</span>
   <span class="token property">"converted_from_user_script"</span><span class="token operator">:</span> ...<span class="token punctuation">,</span>
+  <span class="token property">"<a href="/docs/extensions/mv2/manifest/cross_origin_embedder_policy">cross_origin_embedder_policy</a>"</span><span class="token operator">:</span> <span class="token string">{"value": "require-corp"}</span><span class="token punctuation">,</span>
+  <span class="token property">"<a href="/docs/extensions/mv2/manifest/cross_origin_opener_policy">cross_origin_opener_policy</a>"</span><span class="token operator">:</span> <span class="token string">{"value": "same-origin"}</span><span class="token punctuation">,</span>
   <span class="token property">"current_locale"</span><span class="token operator">:</span> ...<span class="token punctuation">,</span>
   <span class="token property">"declarative_net_request"</span><span class="token operator">:</span> ...<span class="token punctuation">,</span>
   <span class="token property">"<a href="/docs/extensions/mv2/devtools/#devtools-page">devtools_page</a>"</span><span class="token operator">:</span> <span class="token string">"devtools.html"</span><span class="token punctuation">,</span>

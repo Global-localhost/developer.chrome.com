@@ -122,7 +122,7 @@ origins ought to be effected. Currently, origins are divided into three categori
   action. If you don't specify an `originTypes`, the API defaults to removing data from unprotected
   web origins.
 - `protectedWeb` covers those web origins that have been installed as hosted applications.
-  Installing [Angry Birds][2], for example, protects the origin `http://chrome.angrybirds.com`, and
+  Installing [Angry Birds][2], for example, protects the origin `https://chrome.angrybirds.com`, and
   removes it from the `unprotectedWeb` category. Please do be careful when triggering deletion of
   data for these origins: make sure your users know what they're getting, as this will irrevocably
   remove their game data. No one wants to knock tiny pig houses over more often than necessary.
@@ -170,8 +170,10 @@ extension removes data on their behalf.
 
 ## Examples
 
-Samples for the `browsingData` API are available [on the samples page][3].
+To try this API, install the [browsingData API example][4] from the [chrome-extension-samples][3]
+repository.
 
-[1]: /docs/extensions/mv2/tabs
+[1]: /docs/extensions/mv3/manifest
 [2]: https://chrome.google.com/webstore/detail/aknpkdffaafgjchaibgeefbgmgeghloj
-[3]: /docs/extensions/mv2/samples#search:browsingData
+[3]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/api-samples
+[4]: https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/api-samples/browsingData

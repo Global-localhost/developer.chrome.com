@@ -32,7 +32,7 @@ Here's what you need to know:
 * [Web NFC](#web-nfc) starts its origin trial.
 * And [more](#more).
 
-I'm [Pete LePage](https://twitter.com/petele), working and shooting from home,
+I'm [Pete LePage](https://petelepage.com/), working and shooting from home,
 let's dive in and see what's new for developers in Chrome 81!
 
 {% Aside %}
@@ -47,7 +47,7 @@ We recently announced an [adjusted release schedule][sched-adjust] for Chrome.
 We did this because it is important to ensure Chrome continues to be stable,
 secure, and work reliably for anyone who depends on it.
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/GHbwYSfm0D7biJ0GZhOL.jpg", alt="Screenshot of Chromium Calendar", className="float-right", height="391", width="800" %} %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/GHbwYSfm0D7biJ0GZhOL.jpg", alt="Screenshot of Chromium Calendar", class="float-right", height="391", width="800" %} %}
 
 In short, Chrome 81 is rolling out now. We're going to skip Chrome 82, and move
 directly to Chrome 83, which will be released 3 weeks earlier than planned,
@@ -65,7 +65,7 @@ schedule in the [Chromium Developers group][cr-dev]. You can also check our
 
 ## WebXR hit testing {: #hit-testing }
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/ZQU1XkZB415LOjJZ11L4.jpg", alt="", className="float-right", height="1422", width="800" %} %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/ZQU1XkZB415LOjJZ11L4.jpg", alt="", class="float-right", height="1422", width="800" %} %}
 
 There are a handful of native apps that let you see what a new couch or chair
 might look like in your home. With an update to the Web XR Device API, it's
@@ -86,7 +86,7 @@ for more details.
 App icon badging is graduating from Origin Trial to stable, which means you
 can now use it on any site, without a token.
 
-{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/OYVASlDc4gtR75yunTHh.jpg", alt="", className="float-right", height="388", width="658" %}
+{% Img src="image/0g2WvpbGRGdVs0aAPc6ObG7gkud2/OYVASlDc4gtR75yunTHh.jpg", alt="", class="float-right", height="388", width="658" %}
 
 Badging of app icons makes it easy to subtly notify the user that there is
 some new activity that might require their attention, or to indicate a small
@@ -149,7 +149,7 @@ a complete list of features in origin trial.
 This covers only some of the key highlights. Check the links below for
 additional changes in Chrome 81.
 
-* [What's new in Chrome DevTools (81)](https://developers.google.com/web/updates/2020/01/devtools)
+* [What's new in Chrome DevTools (81)](/blog/new-in-devtools-81)
 * [Chrome 81 deprecations & removals](https://developers.google.com/web/updates/2020/02/chrome-81-deps-rems)
 * [ChromeStatus.com updates for Chrome 81](https://www.chromestatus.com/features#milestone%3D81)
 * [What's new in JavaScript in Chrome 81](https://v8.dev/blog/v8-release-81)

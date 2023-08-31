@@ -25,6 +25,10 @@ declare global {
      */
     fileSlug: string;
     /**
+     * Mapped from the input file path
+     */
+    filePathStem: string;
+    /**
      * The full path to the output file to be written for this content
      */
     outputPath: string;
@@ -39,11 +43,11 @@ declare global {
     /**
      * All data for this piece of content (includes any data inherited from layouts)
      */
-    data: TODO;
+    data: EleventyData;
     /**
      * The rendered content of this template. This does not include layout wrappers.
      */
-    templateContent: unknown;
+    templateContent: string;
     /**
      * @UNDOCUMENTED
      */

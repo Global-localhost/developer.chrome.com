@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-const removeMarkdown = require('remove-markdown');
-const {createHash} = require('crypto');
+/**
+ * @fileoverview Collection of indexable posts rewritten to our expected format
+ * for indexing via Algolia.
+ */
 
-const {generateSrc} = require('../_shortcodes/Img');
-const {drafts} = require('../_utils/drafts');
+const {createHash} = require('crypto');
+const striptags = require('striptags');
+const {generateImgixSrc} = require('../_shortcodes/Img');
 const {stripDefaultLocale} = require('../_filters/urls');
+const {
+  getChromeApiNamespacePaths,
+} = require('../_utils/getChromeApiNamespacePaths');
 
 /**
  * Shrink the size of the given fulltext to fit within a certain limit, at the
@@ -46,38 +52,75 @@ function limitText(content, limit = 7500) {
  * @param {EleventyCollectionObject} collections
  * @returns {AlgoliaCollectionItem[]}
  */
-module.exports = collections => {
-  const allSorted = collections.getAllSorted().filter(drafts);
-  /** @type {AlgoliaCollectionItem[]} */
-  const algoliaCollectionItems = [];
+const algoliaCollection = collections => {
+  const toIndex = collections.getAllSorted().filter(item => {
+    const {data} = item;
 
-  for (const item of allSorted) {
-    if (item.data.disable_algolia || item.data.permalink === false) {
-      continue;
+    // Filter out pages we don't want to index. This includes drafts, which we
+    // always filter (even in dev, since we're not really indexing here).
+    if (
+      data.disable_algolia ||
+      data.noindex ||
+      data.draft ||
+      (data.permalink === false && Boolean(data.isVirtualItem) === false)
+    ) {
+      return false;
     }
 
-    if (item.data.tags && typeof item.data.tags === 'string') {
-      item.data.tags = [item.data.tags];
+    return true;
+  });
+
+  return toIndex.map(item => {
+    let image = item.data.thumbnail ?? item.data.hero;
+    if (image) {
+      image = generateImgixSrc(image, {w: 100, auto: 'format'});
     }
+
+    const url = item.data.deepLink || item.url;
 
     /** @type {AlgoliaCollectionItem} */
     const algoliaCollectionItem = {
       title: item.data.title,
       description: item.data.description,
-      content: limitText(removeMarkdown(item.template.frontMatter.content)),
-      url: stripDefaultLocale(item.url),
-      tags: item.data.tags || [],
+      content: undefined,
+      url: stripDefaultLocale(url),
+      tags: [item.data.tags ?? []].flat(),
       locale: item.data.locale,
-      image:
-        item.data.hero && generateSrc(item.data.hero, {w: 100, auto: 'format'}),
-      objectID: createHash('md5').update(item.url).digest('hex'),
+      image,
+      objectID: createHash('md5').update(url).digest('hex'),
     };
+
+    // The item is dumped to JSON, but we can't get at the underlying post's
+    // templateContent until the rendering state of 11ty: the templateContent
+    // prop itself is a getter.
+    // (templateContent returns the final rendered HTML for this page, not
+    // including the layout).
+    // So, define our own getter which will work at that later point.
+    Object.defineProperty(algoliaCollectionItem, 'content', {
+      get() {
+        // Strip HTML tags and limit to a sensible size for indexing.
+        // As stated above, there's no more Markdown in this content.
+        const text = striptags(item.templateContent ?? '');
+        return limitText(text);
+      },
+      enumerable: true,
+    });
+
+    // Add API types to algolia doc to allow fully qualified searches,
+    // like chrome.webRequest.onBeforeSendHeaders instead of just being
+    // able to search onBeforeSendHeaders which also appears in the content
+    if (item.data.api && item.data.chromeApiNamespaces[item.data.api]) {
+      const apiNamespace = item.data.chromeApiNamespaces[item.data.api];
+      const apiNamespacePaths = getChromeApiNamespacePaths(apiNamespace);
+      algoliaCollectionItem.apiNamespacePaths = apiNamespacePaths;
+    }
 
     if (item.data.type) {
       algoliaCollectionItem.type = item.data.type;
     }
 
-    algoliaCollectionItems.push(algoliaCollectionItem);
-  }
-  return algoliaCollectionItems;
+    return algoliaCollectionItem;
+  });
 };
+
+module.exports = algoliaCollection;

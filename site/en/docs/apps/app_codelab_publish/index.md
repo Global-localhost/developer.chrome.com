@@ -1,6 +1,7 @@
 ---
 layout: 'layouts/doc-post.njk'
 title: "Step 7: Publish Your App"
+seoTitle: "Step 7: Publish Your App [Deprecated]"
 date: 2014-10-17
 #updated: TODO
 description: How to publish your Chrome App in the Chrome Web Store.
@@ -99,7 +100,7 @@ world.
 
 Congratulations on completing this Chrome Apps codelab!
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: https://github.com/mangini/io13-codelab/archive/master.zip
 [4]: #view-in-webstore

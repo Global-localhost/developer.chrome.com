@@ -23,7 +23,7 @@ Along the same lines, a full explanation of the Web Share Target implementation 
 scope and developers can find more information in [this article][1].
 
 The demo application at [https://scrapbook-pwa.web.app/][4] will be used as the PWA for this
-article, and its source code is available on [Github][5], and the Android Application is based on
+article, and its source code is available on [GitHub][5], and the Android Application is based on
 the [basic Trusted Web Activity demo][6].
 
 ## Add Web Share Target to the Android app
@@ -39,7 +39,7 @@ first step, update the application to use a version that is higher or equal to 2
 ```groovy
 dependencies {
     ...
-    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.1.0'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.2.0'
 }
 ```
 

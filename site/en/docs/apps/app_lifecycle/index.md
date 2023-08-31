@@ -1,6 +1,7 @@
 ---
 layout: "layouts/doc-post.njk"
 title: "Chrome App Lifecycle"
+seoTitle: "Chrome App Lifecycle [Deprecated]"
 date: 2012-09-17
 updated: 2014-11-14
 description: An overview of the lifecycle of Chrome Apps.
@@ -146,7 +147,7 @@ chrome.runtime.onSuspend.addListener(function() {
 });
 ```
 
-[1]: https://blog.chromium.org/2020/01/moving-forward-from-chrome-apps.html
+[1]: https://blog.chromium.org/2020/08/changes-to-chrome-app-support-timeline.html
 [2]: /apps/migration
 [3]: storage
 [4]: app_storage#options

@@ -15,7 +15,6 @@
  */
 
 import {store} from '../store';
-import 'wicg-inert';
 
 export const expandSideNav = store.action(() => {
   document.querySelectorAll('[data-side-nav-inert').forEach(item => {
@@ -44,7 +43,7 @@ export const collapseSideNav = store.action(() => {
 });
 
 export const restoreFocus = store.action(() => {
-  /** @type {HTMLElement} */ (document.querySelector(
-    '.top-nav__hamburger'
-  )).focus();
+  /** @type {HTMLElement} */ (
+    document.querySelector('.top-nav__hamburger')
+  ).focus();
 });
